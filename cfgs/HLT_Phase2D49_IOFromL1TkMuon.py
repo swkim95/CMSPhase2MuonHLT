@@ -1058,10 +1058,10 @@ process.hltTrkL3MuonPixelTracksFitter = cms.EDProducer("PixelFitterByHelixProjec
 process.hltTrkL3FromL1TkMuonPixelTracksTrackingRegions = cms.EDProducer("CandidateSeededTrackingRegionsEDProducer",
     RegionPSet = cms.PSet(
         beamSpot = cms.InputTag("hltOnlineBeamSpot"),
-        deltaEta = cms.double(0.35),        # modified at the end
-        deltaPhi = cms.double(0.2),         # modified at the end
+        deltaEta = cms.double(0.035),        # modified at the end
+        deltaPhi = cms.double(0.02),         # modified at the end
         input = cms.InputTag("L1TkMuons", "", "MYHLT"),  # new L1 input HERE
-        maxNRegions = cms.int32(10000),     # was 2
+        maxNRegions = cms.int32(10000),      # was 2
         maxNVertices = cms.int32(1),
         measurementTrackerName = cms.InputTag(""),
         mode = cms.string('BeamSpotSigma'),
@@ -1069,7 +1069,7 @@ process.hltTrkL3FromL1TkMuonPixelTracksTrackingRegions = cms.EDProducer("Candida
         nSigmaZVertex = cms.double(3.0),
         originRadius = cms.double(0.2),
         precise = cms.bool(True),
-        ptMin = cms.double(10.0),           # modified at the end
+        ptMin = cms.double(2.0),            # modified at the end
         searchOpt = cms.bool(False),
         vertexCollection = cms.InputTag("notUsed"),
         whereToUseMeasurementTracker = cms.string('Never'),
@@ -1236,21 +1236,13 @@ process.hltIter0TrkL3FromL1TkMuonCkfTrackCandidates = cms.EDProducer("CkfTrackCa
 
 process.hltIter0TrkL3FromL1TkMuonCtfWithMaterialTracks = cms.EDProducer("TrackProducer",
     AlgorithmName = cms.string('hltIter0'),
-
-    # HERE
     Fitter = cms.string('FlexibleKFFittingSmoother'),
-    # Fitter = cms.string('KFFittingSmootherForInOut'),
-
     GeometricInnerState = cms.bool(True),
     MeasurementTracker = cms.string(''),
     MeasurementTrackerEvent = cms.InputTag("hltSiStripClusters"),
     NavigationSchool = cms.string(''),
     Propagator = cms.string('hltESPRungeKuttaTrackerPropagator'),
-
-    # HERE
     SimpleMagneticField = cms.string(''),
-    # SimpleMagneticField = cms.string('ParabolicMf'),
-
     TTRHBuilder = cms.string('WithTrackAngle'),
     TrajectoryInEvent = cms.bool(False),
     alias = cms.untracked.string('ctfWithMaterialTracks'),
@@ -1258,10 +1250,7 @@ process.hltIter0TrkL3FromL1TkMuonCtfWithMaterialTracks = cms.EDProducer("TrackPr
     clusterRemovalInfo = cms.InputTag(""),
     src = cms.InputTag("hltIter0TrkL3FromL1TkMuonCkfTrackCandidates"),
     useHitsSplitting = cms.bool(False),
-
-    # HERE
     useSimpleMF = cms.bool(False)
-    # useSimpleMF = cms.bool(True)
 )
 
 process.hltIter0TrkL3FromL1TkMuonTrackCutClassifier = cms.EDProducer("TrackCutClassifier",
@@ -1472,21 +1461,13 @@ process.hltIter2TrkL3FromL1TkMuonCkfTrackCandidates = cms.EDProducer("CkfTrackCa
 
 process.hltIter2TrkL3FromL1TkMuonCtfWithMaterialTracks = cms.EDProducer("TrackProducer",
     AlgorithmName = cms.string('hltIter2'),
-
-    # HERE
     Fitter = cms.string('FlexibleKFFittingSmoother'),
-    # Fitter = cms.string('KFFittingSmootherForInOut'),
-
     GeometricInnerState = cms.bool(True),
     MeasurementTracker = cms.string(''),
     MeasurementTrackerEvent = cms.InputTag("hltIter2TrkL3FromL1TkMuonMaskedMeasurementTrackerEvent"),
     NavigationSchool = cms.string(''),
     Propagator = cms.string('hltESPRungeKuttaTrackerPropagator'),
-
-    # HERE
     SimpleMagneticField = cms.string(''),
-    # SimpleMagneticField = cms.string('ParabolicMf'),
-
     TTRHBuilder = cms.string('WithTrackAngle'),
     TrajectoryInEvent = cms.bool(False),
     alias = cms.untracked.string('ctfWithMaterialTracks'),
@@ -1494,10 +1475,7 @@ process.hltIter2TrkL3FromL1TkMuonCtfWithMaterialTracks = cms.EDProducer("TrackPr
     clusterRemovalInfo = cms.InputTag(""),
     src = cms.InputTag("hltIter2TrkL3FromL1TkMuonCkfTrackCandidates"),
     useHitsSplitting = cms.bool(False),
-
-    # HERE
     useSimpleMF = cms.bool(False)
-    # useSimpleMF = cms.bool(True)
 )
 
 process.hltIter2TrkL3FromL1TkMuonTrackCutClassifier = cms.EDProducer("TrackCutClassifier",
@@ -1566,156 +1544,6 @@ process.hltIter2TrkL3FromL1TkMuonMerged = cms.EDProducer("TrackListMerger",
     )),
     trackAlgoPriorityOrder = cms.string('hltESPTrackAlgoPriorityOrder'),
     writeOnlyTrkQuals = cms.bool(False)
-)
-
-process.hltTrkL3MuonAndMuonFromL1TkMerged = cms.EDProducer("TrackListMerger",
-    Epsilon = cms.double(-0.001),
-    FoundHitBonus = cms.double(5.0),
-    LostHitPenalty = cms.double(20.0),
-    MaxNormalizedChisq = cms.double(1000.0),
-    MinFound = cms.int32(3),
-    MinPT = cms.double(0.05),
-    ShareFrac = cms.double(0.19),
-    TrackProducers = cms.VInputTag("hltTrkL3OIMuonTrackSelectionHighPurity", "hltIter2TrkL3FromL1TkMuonMerged"),
-    allowFirstHitShare = cms.bool(True),
-    copyExtras = cms.untracked.bool(True),
-    copyMVA = cms.bool(False),
-    hasSelector = cms.vint32(0, 0),
-    indivShareFrac = cms.vdouble(1.0, 1.0),
-    newQuality = cms.string('confirmed'),
-    selectedTrackQuals = cms.VInputTag("hltTrkL3OIMuonTrackSelectionHighPurity", "hltIter2TrkL3FromL1TkMuonMerged"),
-    setsToMerge = cms.VPSet(cms.PSet(
-        pQual = cms.bool(False),
-        tLists = cms.vint32(0, 1)
-    )),
-    trackAlgoPriorityOrder = cms.string('hltESPTrackAlgoPriorityOrder'),
-    writeOnlyTrkQuals = cms.bool(False)
-)
-
-process.hltTrkL3GlbMuon = cms.EDProducer("L3MuonProducer",
-    L3TrajBuilderParameters = cms.PSet(
-        GlbRefitterParameters = cms.PSet(
-            CSCRecSegmentLabel = cms.InputTag("hltCscSegments"),
-            Chi2CutCSC = cms.double(150.0),
-            Chi2CutDT = cms.double(10.0),
-            Chi2CutRPC = cms.double(1.0),
-            DTRecSegmentLabel = cms.InputTag("hltDt4DSegments"),
-            DYTthrs = cms.vint32(30, 15),
-            DoPredictionsOnly = cms.bool(False),
-            Fitter = cms.string('hltESPL3MuKFTrajectoryFitter'),
-            HitThreshold = cms.int32(1),
-            MuonHitsOption = cms.int32(1),
-            MuonRecHitBuilder = cms.string('hltESPMuonTransientTrackingRecHitBuilder'),
-            PropDirForCosmics = cms.bool(False),
-            Propagator = cms.string('hltESPSmartPropagatorAny'),
-            RefitDirection = cms.string('insideOut'),
-            RefitFlag = cms.bool(True),
-            RefitRPCHits = cms.bool(True),
-            SkipStation = cms.int32(-1),
-            TrackerRecHitBuilder = cms.string('WithTrackAngle'),
-            TrackerSkipSection = cms.int32(-1),
-            TrackerSkipSystem = cms.int32(-1)
-        ),
-        GlobalMuonTrackMatcher = cms.PSet(
-            Chi2Cut_1 = cms.double(50.0),
-            Chi2Cut_2 = cms.double(50.0),
-            Chi2Cut_3 = cms.double(200.0),
-            DeltaDCut_1 = cms.double(40.0),
-            DeltaDCut_2 = cms.double(10.0),
-            DeltaDCut_3 = cms.double(15.0),
-            DeltaRCut_1 = cms.double(0.1),
-            DeltaRCut_2 = cms.double(0.2),
-            DeltaRCut_3 = cms.double(1.0),
-            Eta_threshold = cms.double(1.2),
-            LocChi2Cut = cms.double(0.001),
-            MinP = cms.double(2.5),
-            MinPt = cms.double(1.0),
-            Propagator = cms.string('hltESPSmartPropagator'),
-            Pt_threshold1 = cms.double(0.0),
-            Pt_threshold2 = cms.double(999999999.0),
-            Quality_1 = cms.double(20.0),
-            Quality_2 = cms.double(15.0),
-            Quality_3 = cms.double(7.0)
-        ),
-        MuonRecHitBuilder = cms.string('hltESPMuonTransientTrackingRecHitBuilder'),
-        MuonTrackingRegionBuilder = cms.PSet(
-            DeltaEta = cms.double(0.2),
-            DeltaPhi = cms.double(0.15),
-            DeltaR = cms.double(0.025),
-            DeltaZ = cms.double(24.2),
-            EtaR_UpperLimit_Par1 = cms.double(0.25),
-            EtaR_UpperLimit_Par2 = cms.double(0.15),
-            Eta_fixed = cms.bool(True),
-            Eta_min = cms.double(0.1),
-            MeasurementTrackerName = cms.InputTag("hltESPMeasurementTracker"),
-            OnDemand = cms.int32(-1),
-            PhiR_UpperLimit_Par1 = cms.double(0.6),
-            PhiR_UpperLimit_Par2 = cms.double(0.2),
-            Phi_fixed = cms.bool(True),
-            Phi_min = cms.double(0.1),
-            Pt_fixed = cms.bool(False),
-            Pt_min = cms.double(3.0),
-            Rescale_Dz = cms.double(4.0),
-            Rescale_eta = cms.double(3.0),
-            Rescale_phi = cms.double(3.0),
-            UseVertex = cms.bool(False),
-            Z_fixed = cms.bool(False),
-            beamSpot = cms.InputTag("hltOnlineBeamSpot"),
-            input = cms.InputTag("hltL2Muons","UpdatedAtVtx"),
-            maxRegions = cms.int32(2),
-            precise = cms.bool(True),
-            vertexCollection = cms.InputTag("pixelVertices")
-        ),
-        PCut = cms.double(2.5),
-        PtCut = cms.double(1.0),
-        RefitRPCHits = cms.bool(True),
-        ScaleTECxFactor = cms.double(-1.0),
-        ScaleTECyFactor = cms.double(-1.0),
-        TrackTransformer = cms.PSet(
-            DoPredictionsOnly = cms.bool(False),
-            Fitter = cms.string('hltESPL3MuKFTrajectoryFitter'),
-            MuonRecHitBuilder = cms.string('hltESPMuonTransientTrackingRecHitBuilder'),
-            Propagator = cms.string('hltESPSmartPropagatorAny'),
-            RefitDirection = cms.string('insideOut'),
-            RefitRPCHits = cms.bool(True),
-            Smoother = cms.string('hltESPKFTrajectorySmootherForMuonTrackLoader'),
-            TrackerRecHitBuilder = cms.string('WithTrackAngle')
-        ),
-        TrackerPropagator = cms.string('SteppingHelixPropagatorAny'),
-        TrackerRecHitBuilder = cms.string('WithTrackAngle'),
-        tkTrajBeamSpot = cms.InputTag("hltOnlineBeamSpot"),
-        tkTrajLabel = cms.InputTag("hltTrkL3MuonAndMuonFromL1TkMerged"),
-        tkTrajMaxChi2 = cms.double(9999.0),
-        tkTrajMaxDXYBeamSpot = cms.double(9999.0),
-        tkTrajUseVertex = cms.bool(False),
-        tkTrajVertex = cms.InputTag("Notused")
-    ),
-    MuonCollectionLabel = cms.InputTag("hltL2Muons","UpdatedAtVtx"),
-    ServiceParameters = cms.PSet(
-        Propagators = cms.untracked.vstring(
-            'hltESPSmartPropagatorAny', 
-            'SteppingHelixPropagatorAny', 
-            'hltESPSmartPropagator', 
-            'hltESPSteppingHelixPropagatorOpposite'
-        ),
-        RPCLayers = cms.bool(True),
-        UseMuonNavigation = cms.untracked.bool(True)
-    ),
-    TrackLoaderParameters = cms.PSet(
-        DoSmoothing = cms.bool(True),
-        MuonSeededTracksInstance = cms.untracked.string('L2Seeded'),
-        MuonUpdatorAtVertexParameters = cms.PSet(
-            BeamSpotPositionErrors = cms.vdouble(0.1, 0.1, 5.3),
-            MaxChi2 = cms.double(1000000.0),
-            Propagator = cms.string('hltESPSteppingHelixPropagatorOpposite')
-        ),
-        PutTkTrackIntoEvent = cms.untracked.bool(False),
-        SmoothTkTrack = cms.untracked.bool(False),
-        Smoother = cms.string('hltESPKFTrajectorySmootherForMuonTrackLoader'),
-        TTRHBuilder = cms.string('WithTrackAngle'),
-        VertexConstraint = cms.bool(False),
-        beamSpot = cms.InputTag("hltOnlineBeamSpot")
-    )
 )
 
 process.hltTrkL3MuonsNoID = cms.EDProducer("MuonIdProducer",
@@ -1964,7 +1792,6 @@ process.hltTrkL3MuonsNoID = cms.EDProducer("MuonIdProducer",
     globalTrackQualityInputTag = cms.InputTag("glbTrackQual"),
     hcalDepositName = cms.string('hcal'),
     hoDepositName = cms.string('ho'),
-    # HERE
     inputCollectionLabels = cms.VInputTag("hltIter2TrkL3FromL1TkMuonMerged"),
     inputCollectionTypes = cms.vstring(
         'inner tracks'
@@ -2026,7 +1853,7 @@ process.hltTrkL3MuonCandidates = cms.EDProducer( "L3MuonCandidateProducerFromMuo
     InputObjects = cms.InputTag("hltTrkL3Muons")
 )
 
-process.HLTIOFromL1TkMuonCandidateSequence = cms.Sequence(
+process.HLTIOFromL1TkMuonTkCandidateSequence = cms.Sequence(
     process.hltTrkL3MuonPixelTracksFilter+
     process.hltTrkL3MuonPixelTracksFitter+
     process.hltTrkL3FromL1TkMuonPixelTracksTrackingRegions+
@@ -2055,15 +1882,16 @@ process.HLTIOFromL1TkMuonCandidateSequence = cms.Sequence(
     process.hltIter2TrkL3FromL1TkMuonMerged
 )
 
-process.HLTL3muonrecoNocandSequence = cms.Sequence(
+process.HLTL3TrkMuonRecoNocandSequence = cms.Sequence(
+    process.HLTIOFromL1TkMuonTkCandidateSequence+
     process.hltTrkL3MuonsNoID+
     process.hltTrkL3Muons+
     process.hltL3MuonsTrkL3Links+
     process.hltTrkL3MuonTracks
 )
 
-process.HLTL3muonrecoSequence = cms.Sequence(
-    process.HLTL3muonrecoNocandSequence+
+process.HLTL3TrkMuonRecoSequence = cms.Sequence(
+    process.HLTL3TrkMuonRecoNocandSequence+
     process.hltTrkL3MuonCandidates
 )
 
@@ -2244,9 +2072,8 @@ process.HLT_IOFromL1TkMuon = cms.Path(
     process.HLTDoLocalPixelSequence+
     process.HLTDoLocalStripSequence+
 
-    process.HLTIOFromL1TkMuonCandidateSequence+
-
-    process.HLTL3muonrecoSequence+
+    # L3 reco
+    process.HLTL3TrkMuonRecoSequence+
     # cms.ignore(process.hltL1fForTrkL3L1fL1sMu22or25L1Filtered0)+
     # cms.ignore(process.hltL3fL1sMu22Or25L1f0L2f10QL3Filtered50Q)+
 
