@@ -1,6 +1,6 @@
 # CMS Phase-2 Muon HLT
 
-```
+```shell
 cmsrel CMSSW_11_1_3
 cd CMSSW_11_1_3/src
 cmsenv
