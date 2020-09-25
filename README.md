@@ -23,5 +23,5 @@ scram b -j 8
 ```
 
 ## Running L3 Trk Muon reco
-cd cfgs
+cd cfgs\
 cmsRun HLT_Phase2D49_IOFromL1TkMuon.py
