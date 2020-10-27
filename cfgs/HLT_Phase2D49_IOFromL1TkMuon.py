@@ -2056,6 +2056,30 @@ process.hltTrkL3FromL1TkMuonPixelTracksTrackingRegions.RegionPSet.deltaPhi = cms
 process.hltTrkL3FromL1TkMuonPixelTracksTrackingRegions.RegionPSet.ptMin = cms.double(2.0)
 # -- #
 
+# -- input db
+process.load("CondCore.CondDB.CondDB_cfi")
+process.CondDB.connect = "sqlite_file:L1TObjScaling.db"
+
+process.L1TScalingESSource = cms.ESSource(
+    "PoolDBESSource",
+    process.CondDB,
+    DumpStat=cms.untracked.bool(True),
+    toGet=cms.VPSet(
+        cms.PSet(
+            record=cms.string("L1TObjScalingRcd"),
+            tag=cms.string("L1TkMuonScaling"),
+            label=cms.untracked.string("L1TkMuonScaling"),
+        ),
+        cms.PSet(
+            record=cms.string("L1TObjScalingRcd"),
+            tag=cms.string("L1PFJetScaling"),
+            label=cms.untracked.string("L1PFJetScaling"),
+        ),
+    ),
+)
+process.es_prefer_l1tscaling = cms.ESPrefer("PoolDBESSource", "L1TScalingESSource")
+# -- #
+
 # -- Filter, Path and Schedule -- #
 process.hltL1TkSingleMuFiltered22 = cms.EDFilter("L1TkMuonFilter",
     MinPt = cms.double(22),
