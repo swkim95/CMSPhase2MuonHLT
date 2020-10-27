@@ -1992,6 +1992,8 @@ process.DQMOutput = cms.EndPath( process.dqmOutput )
 # -- #
 
 # -- Test Setup -- #
+process.GlobalTag.globaltag = "111X_mcRun4_realistic_T15_v2"
+
 process.source.fileNames = cms.untracked.vstring(
     # "file:/eos/user/m/moh/TestSamples/DYToLL_M-50_TuneCP5_14TeV-pythia8__Phase2HLTTDRWinter20DIGI-PU200_pilot_110X_mcRun4_realistic_v3-v2__GEN-SIM-DIGI-RAW/4043F7D2-1BF4-FE40-82D9-10786D005454.root"
 
@@ -2032,7 +2034,7 @@ process.source.fileNames = cms.untracked.vstring(
 )
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32( -1 )
+    input = cms.untracked.int32( 100 )
 )
 
 process.options = cms.untracked.PSet(
@@ -2057,6 +2059,7 @@ process.hltTrkL3FromL1TkMuonPixelTracksTrackingRegions.RegionPSet.ptMin = cms.do
 # -- #
 
 # -- input db
+# https://github.com/trtomei/cmssw/blob/Phase2-L1T-HLT-Interface/HLTrigger/HLTfilters/test/test_Phase2L1THLT.py
 process.load("CondCore.CondDB.CondDB_cfi")
 process.CondDB.connect = "sqlite_file:L1TObjScaling.db"
 
@@ -2069,11 +2072,6 @@ process.L1TScalingESSource = cms.ESSource(
             record=cms.string("L1TObjScalingRcd"),
             tag=cms.string("L1TkMuonScaling"),
             label=cms.untracked.string("L1TkMuonScaling"),
-        ),
-        cms.PSet(
-            record=cms.string("L1TObjScalingRcd"),
-            tag=cms.string("L1PFJetScaling"),
-            label=cms.untracked.string("L1PFJetScaling"),
         ),
     ),
 )
