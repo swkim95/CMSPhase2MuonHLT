@@ -46,6 +46,6 @@ scram b -j 8
 cd your-working-directory
 git clone https://github.com/khaosmos93/CMSPhase2MuonHLT.git
 cd CMSPhase2MuonHLT/cfgs
-cmsRun HLT_Phase2D49_IOFromL1TkMuon.py
+cmsRun HLT_Phase2D49_IOFromL1TkMuon_CMSSW_11_1_3.py
 ```
 
