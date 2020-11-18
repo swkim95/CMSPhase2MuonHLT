@@ -2,7 +2,7 @@ import FWCore.ParameterSet.Config as cms
 
 def loadPhase2MuonHLTPSets(process, processName = "MYHLT"):
 
-    hltPhase2PSetPvClusterComparerForIT = cms.PSet(
+    process.hltPhase2PSetPvClusterComparerForIT = cms.PSet(
         track_chi2_max = cms.double( 20.0 ),
         track_pt_max = cms.double( 100.0 ),
         track_prob_min = cms.double( -1.0 ),
