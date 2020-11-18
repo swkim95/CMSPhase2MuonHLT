@@ -15,11 +15,6 @@ git cms-merge-topic khaosmos93:dev_1114_L2L3FromL1TkMu
 
 git clone https://github.com/khaosmos93/CMSPhase2MuonHLT.git HLTrigger/PhaseII/python/Muon
 
-# for full tracking (temporary)
-git clone https://github.com/AdrianoDee/CMS_HLT_Phase2_Tracking.git HLTrigger/PhaseII/CMS_HLT_Phase2_Tracking
-mkdir -p HLTrigger/PhaseII/python/Tracking
-mv HLTrigger/PhaseII/CMS_HLT_Phase2_Tracking/wfs HLTrigger/PhaseII/python/Tracking
-
 scram b -j 10
 ```
 

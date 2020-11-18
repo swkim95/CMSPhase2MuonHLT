@@ -5165,7 +5165,8 @@ def customizePhase2MuonHLTTrkIsolationRegional(process, processName = "MYHLT"):
 
 def customizePhase2MuonHLTTrkIsolationFull(process, processName = "MYHLT"):
 
-    process.load("HLTrigger.PhaseII.Tracking.tracking_sequences_nol1")
+    from HLTrigger.PhaseII.Muon.Customizers.phase2_tracking import customise_hltPhase2_TRKv06_1
+    process = customise_hltPhase2_TRKv06_1(process)
 
     process.tracking_v6_1_NoVertexReco = cms.Sequence(
         process.trackerClusterCheck
