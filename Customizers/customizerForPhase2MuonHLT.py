@@ -5846,7 +5846,7 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
         trkIsoSeq
     )
 
-    return process
+    return process, (pfIsoTags, pfIsoLabels, pfIsoMods), (trkIsoTags, trkIsoLabels, trkIsoMods)
 
 
 
