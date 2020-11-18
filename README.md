@@ -27,7 +27,7 @@ scram b -j 10
 ```shell
 cd your-working-directory
 cp /afs/cern.ch/user/t/tomei/public/L1TObjScaling.db your-working-directory
-cp HLTrigger/PhaseII/python/Muon/example_cfgs/HLT_Phase2_L3MuonFromL1TkMuon.py your-working-directory
+cp $CMSSW_BASE/src/HLTrigger/PhaseII/python/Muon/example_cfgs/HLT_Phase2_L3MuonFromL1TkMuon.py your-working-directory
 cmsRun HLT_Phase2_L3MuonFromL1TkMuon.py
 ```
 
