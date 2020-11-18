@@ -37,9 +37,9 @@ cmsRun HLT_Phase2_L3MuonFromL1TkMuon.py
 
 
 
-<details><summary>
+
 ## (Outdated) Running L3 Trk Muon reco in CMSSW_11_1_4
-</summary>
+<details><summary> show </summary>
 <p>
 
 ```shell
@@ -65,9 +65,8 @@ cmsRun HLT_Phase2D49_IOFromL1TkMuon.py
 </details>
 
 
-<details><summary>
 ## (Outdated) Running L3 Trk Muon reco in CMSSW_11_1_3
-</summary>
+<details><summary> show </summary>
 <p>
 
 ```shell
