@@ -5735,8 +5735,8 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
     )
 
 
-    pfIsodRs     = [ 0.3, 0.4, 0.5 ]
-    pfIsodRVetos = [ 0.03, 0.05, 0.07, 0.1 ]
+    pfIsodRs     = [ 0.3, 0.4 ]  # , 0.5 ]
+    pfIsodRVetos = [ 0.00, 0.03, 0.05 ]  # , 0.07, 0.1 ]
 
     pfIsoTags = []
     pfIsoLabels = []
@@ -5789,8 +5789,8 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
     pfIsoSeq = reduce(lambda x,y: x+y, pfIsoMods)
 
     trkIsodRs     = [ 0.3, 0.4 ]
-    trkIsodRVetos = [ 0.005, 0.01, 0.02 ]
-    trkIsodzs     = [ 0.1, 0.15, 0.2, 0.25 ]
+    trkIsodRVetos = [ 0.005, 0.01 ]  # , 0.02 ]
+    trkIsodzs     = [ 0.1, 0.2, 0.25 ]  # [ 0.1, 0.15, 0.2, 0.25 ]
     trkIsodrs     = [ 0.1, 0.2 ]
     trkIsoChi2s   = [ 1.0E64 ]
     trkIsoPtMins  = [ -1.0 ]
