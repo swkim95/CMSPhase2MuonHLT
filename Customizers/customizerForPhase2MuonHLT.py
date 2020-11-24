@@ -5364,12 +5364,12 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
     process = customizePhase2MuonHLTHcalIsolation(process)
     process = customizePhase2MuonHLTHgcalIsolation(process)
 
-    process.hltPhase2L3MuonsEcalIsodR0p3dRVeto0p030 = cms.EDProducer("MuonHLTEcalPFClusterIsolationProducer",
+    process.hltPhase2L3MuonsEcalIsodR0p3dRVeto0p000 = cms.EDProducer("MuonHLTEcalPFClusterIsolationProducer",
         absEtaLowEdges = cms.vdouble(0.0, 1.479),
         doRhoCorrection = cms.bool(False),
         drMax = cms.double(0.3),
-        drVetoBarrel = cms.double(0.03),
-        drVetoEndcap = cms.double(0.03),
+        drVetoBarrel = cms.double(0.0),
+        drVetoEndcap = cms.double(0.0),
         effectiveAreas = cms.vdouble(0.35, 0.193),
         energyBarrel = cms.double(0.0),
         energyEndcap = cms.double(0.0),
@@ -5382,12 +5382,12 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         rhoScale = cms.double(1.0)
     )
 
-    process.hltPhase2L3MuonsHcalIsodR0p3dRVeto0p030 = cms.EDProducer("MuonHLTHcalPFClusterIsolationProducer",
+    process.hltPhase2L3MuonsHcalIsodR0p3dRVeto0p000 = cms.EDProducer("MuonHLTHcalPFClusterIsolationProducer",
         absEtaLowEdges = cms.vdouble(0.0, 1.479),
         doRhoCorrection = cms.bool(False),
         drMax = cms.double(0.3),
-        drVetoBarrel = cms.double(0.03),
-        drVetoEndcap = cms.double(0.03),
+        drVetoBarrel = cms.double(0.0),
+        drVetoEndcap = cms.double(0.0),
         effectiveAreas = cms.vdouble(0.227, 0.372),
         energyBarrel = cms.double(0.0),
         energyEndcap = cms.double(0.0),
@@ -5404,12 +5404,12 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         useHF = cms.bool(False)
     )
 
-    process.hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p030 = cms.EDProducer("MuonHLTEcalPFClusterIsolationProducer",
+    process.hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p000 = cms.EDProducer("MuonHLTEcalPFClusterIsolationProducer",
         absEtaLowEdges = cms.vdouble(0.0, 1.479),
         doRhoCorrection = cms.bool(False),
         drMax = cms.double(0.3),
-        drVetoBarrel = cms.double(0.03),
-        drVetoEndcap = cms.double(0.03),
+        drVetoBarrel = cms.double(0.0),
+        drVetoEndcap = cms.double(0.0),
         effectiveAreas = cms.vdouble(0.29, 0.21),
         energyBarrel = cms.double(0.0),
         energyEndcap = cms.double(0.0),
@@ -5422,7 +5422,7 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         rhoScale = cms.double(1.0)
     )
 
-    process.hltL3crIsoL1TkSingleMu22L3f24QL3pfecalIsoFiltered0p39 = cms.EDFilter( "HLTMuonGenericFilter",
+    process.hltL3crIsoL1TkSingleMu22L3f24QL3pfecalIsoFiltered0p41 = cms.EDFilter( "HLTMuonGenericFilter",
         thrOverE2EE = cms.vdouble( -1.0 ),
         effectiveAreas = cms.vdouble( 0.0, 0.0 ),
         energyLowEdges = cms.vdouble( 0.0 ),
@@ -5430,9 +5430,9 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         saveTags = cms.bool( True ),
         thrOverE2EB = cms.vdouble( -1.0 ),
         thrRegularEE = cms.vdouble( -1.0 ),
-        thrOverEEE = cms.vdouble( 0.39 ),
-        varTag = cms.InputTag( "hltPhase2L3MuonsEcalIsodR0p3dRVeto0p030" ),
-        thrOverEEB = cms.vdouble( 0.39 ),
+        thrOverEEE = cms.vdouble( 0.41 ),
+        varTag = cms.InputTag( "hltPhase2L3MuonsEcalIsodR0p3dRVeto0p000" ),
+        thrOverEEB = cms.vdouble( 0.41 ),
         thrRegularEB = cms.vdouble( -1.0 ),
         lessThan = cms.bool( True ),
         l1EGCand = cms.InputTag( "hltPhase2L3MuonCandidates" ),
@@ -5445,7 +5445,7 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         rhoScale = cms.double( 1.0 )
     )
 
-    process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p40 = cms.EDFilter( "HLTMuonGenericFilter",
+    process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p50 = cms.EDFilter( "HLTMuonGenericFilter",
         thrOverE2EE = cms.vdouble( -1.0 ),
         effectiveAreas = cms.vdouble( 0.0, 0.0 ),
         energyLowEdges = cms.vdouble( 0.0 ),
@@ -5453,24 +5453,24 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         saveTags = cms.bool( True ),
         thrOverE2EB = cms.vdouble( -1.0 ),
         thrRegularEE = cms.vdouble( -1.0 ),
-        thrOverEEE = cms.vdouble( 0.4 ),
-        varTag = cms.InputTag( "hltPhase2L3MuonsHcalIsodR0p3dRVeto0p030" ),
-        thrOverEEB = cms.vdouble( 0.4 ),
+        thrOverEEE = cms.vdouble( 0.5 ),
+        varTag = cms.InputTag( "hltPhase2L3MuonsHcalIsodR0p3dRVeto0p000" ),
+        thrOverEEB = cms.vdouble( 0.5 ),
         thrRegularEB = cms.vdouble( -1.0 ),
         lessThan = cms.bool( True ),
         l1EGCand = cms.InputTag( "hltPhase2L3MuonCandidates" ),
         ncandcut = cms.int32( 1 ),
         absEtaLowEdges = cms.vdouble( 0.0, 1.479 ),
-        candTag = cms.InputTag( "hltL3crIsoL1TkSingleMu22L3f24QL3pfecalIsoFiltered0p39" ),
+        candTag = cms.InputTag( "hltL3crIsoL1TkSingleMu22L3f24QL3pfecalIsoFiltered0p41" ),
         rhoTag = cms.InputTag( "" ),
         rhoMax = cms.double( 9.9999999E7 ),
         useEt = cms.bool( True ),
         rhoScale = cms.double( 1.0 )
     )
 
-    process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p06 = cms.EDFilter("HLTMuonGenericFilter",
+    process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p07 = cms.EDFilter("HLTMuonGenericFilter",
         absEtaLowEdges = cms.vdouble(0.0, 1.479),
-        candTag = cms.InputTag("hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p40"),
+        candTag = cms.InputTag("hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p50"),
         doRhoCorrection = cms.bool(False),
         effectiveAreas = cms.vdouble(0.0, 0.0),
         energyLowEdges = cms.vdouble(0.0),
@@ -5483,12 +5483,12 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         saveTags = cms.bool(True),
         thrOverE2EB = cms.vdouble(-1.0),
         thrOverE2EE = cms.vdouble(-1.0),
-        thrOverEEB = cms.vdouble(0.06),
-        thrOverEEE = cms.vdouble(0.06),
+        thrOverEEB = cms.vdouble(0.07),
+        thrOverEEE = cms.vdouble(0.07),
         thrRegularEB = cms.vdouble(-1.0),
         thrRegularEE = cms.vdouble(-1.0),
         useEt = cms.bool(True),
-        varTag = cms.InputTag("hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p030")
+        varTag = cms.InputTag("hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p000")
     )
 
     process.HLTPhase2L3MuonCaloIsoSequenceIgnoreFilters = cms.Sequence(
@@ -5497,16 +5497,16 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         process.HLTFastJetForMuons +
 
         process.HLTPFClusteringForMuonsUnseeded +
-        process.hltPhase2L3MuonsEcalIsodR0p3dRVeto0p030 +
-        cms.ignore( process.hltL3crIsoL1TkSingleMu22L3f24QL3pfecalIsoFiltered0p39 ) +
+        process.hltPhase2L3MuonsEcalIsodR0p3dRVeto0p000 +
+        cms.ignore( process.hltL3crIsoL1TkSingleMu22L3f24QL3pfecalIsoFiltered0p41 ) +
 
         process.HLTPFHcalClusteringForMuons +
-        process.hltPhase2L3MuonsHcalIsodR0p3dRVeto0p030 +
-        cms.ignore( process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p40 ) +
+        process.hltPhase2L3MuonsHcalIsodR0p3dRVeto0p000 +
+        cms.ignore( process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p50 ) +
 
         process.HLTHgcalTiclPFClusteringForMuons +
-        process.hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p030 +
-        cms.ignore( process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p06 )
+        process.hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p000 +
+        cms.ignore( process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p07 )
     )
 
     process.HLTPhase2L3MuonCaloIsoSequence = cms.Sequence(
@@ -5515,87 +5515,21 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         process.HLTFastJetForMuons +
 
         process.HLTPFClusteringForMuonsUnseeded +
-        process.hltPhase2L3MuonsEcalIsodR0p3dRVeto0p030 +
-        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfecalIsoFiltered0p39 +
+        process.hltPhase2L3MuonsEcalIsodR0p3dRVeto0p000 +
+        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfecalIsoFiltered0p41 +
 
         process.HLTPFHcalClusteringForMuons +
-        process.hltPhase2L3MuonsHcalIsodR0p3dRVeto0p030 +
-        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p40 +
+        process.hltPhase2L3MuonsHcalIsodR0p3dRVeto0p000 +
+        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p50 +
 
         process.HLTHgcalTiclPFClusteringForMuons +
-        process.hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p030 +
-        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p06
+        process.hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p000 +
+        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p07
     )
 
 
     # -- Tracker Isolation -- #
-    process = customizePhase2MuonHLTTrkIsolationRegional(process)
     process = customizePhase2MuonHLTTrkIsolationRegionalNew(process)
-
-    process.hltPhase2L3MuonsTrkIsoRegionaldR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0 = cms.EDProducer("L3MuonCombinedRelativeIsolationProducer",
-        CaloDepositsLabel = cms.InputTag("notUsed"),
-        CaloExtractorPSet = cms.PSet(
-            CaloTowerCollectionLabel = cms.InputTag("hltTowerMakerForAll"),
-            ComponentName = cms.string('CaloExtractor'),
-            DR_Max = cms.double(0.3),
-            DR_Veto_E = cms.double(0.07),
-            DR_Veto_H = cms.double(0.1),
-            DepositLabel = cms.untracked.string('EcalPlusHcal'),
-            Threshold_E = cms.double(0.2),
-            Threshold_H = cms.double(0.5),
-            Vertex_Constraint_XY = cms.bool(False),
-            Vertex_Constraint_Z = cms.bool(False),
-            Weight_E = cms.double(1.0),
-            Weight_H = cms.double(1.0)
-        ),
-        CutsPSet = cms.PSet(
-            ComponentName = cms.string('SimpleCuts'),
-            ConeSizes = cms.vdouble(0.3),
-            EtaBounds = cms.vdouble(2.411),
-            Thresholds = cms.vdouble(1000000000.0),
-            applyCutsORmaxNTracks = cms.bool(False),
-            maxNTracks = cms.int32(-1)
-        ),
-        OutputMuIsoDeposits = cms.bool(True),
-        TrackPt_Min = cms.double(-1.0),
-        TrkExtractorPSet = cms.PSet(
-            BeamSpotLabel = cms.InputTag("offlineBeamSpot"),
-            BeamlineOption = cms.string('BeamSpotFromEvent'),
-            Chi2Ndof_Max = cms.double(1e+64),
-            Chi2Prob_Min = cms.double(-1.0),
-            ComponentName = cms.string('PixelTrackExtractor'),
-            DR_Max = cms.double(0.3),
-            DR_Veto = cms.double(0.005),
-            DR_VetoPt = cms.double(0.025),
-            DepositLabel = cms.untracked.string('PXLS'),
-            Diff_r = cms.double(0.2),
-            Diff_z = cms.double(0.25),
-            NHits_Min = cms.uint32(0),
-            PropagateTracksToRadius = cms.bool(True),
-            PtVeto_Min = cms.double(2.0),
-            Pt_Min = cms.double(-1.0),
-            ReferenceRadius = cms.double(6.0),
-            VetoLeadingTrack = cms.bool(True),
-            inputTrackCollection = cms.InputTag("hltIter2Phase2L3MuonMerged")
-        ),
-        UseCaloIso = cms.bool(False),
-        UseRhoCorrectedCaloDeposits = cms.bool(False),
-        inputMuonCollection = cms.InputTag("hltPhase2L3MuonCandidates"),
-        printDebug = cms.bool(False)
-    )
-
-    process.hltPhase2L3MuonsTrkIsoRegionaldR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p06 = process.hltPhase2L3MuonsTrkIsoRegionaldR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0.clone()
-    process.hltPhase2L3MuonsTrkIsoRegionaldR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p06.CutsPSet.Thresholds = cms.vdouble( 0.06 )
-
-    process.hltL3crIsoL1TkSingleMu22L3f24QL3trkIsoRegionalOldFiltered0p07EcalHcalHgcalTrk = cms.EDFilter( "HLTMuonIsoFilter",
-        saveTags = cms.bool( True ),
-        PreviousCandTag = cms.InputTag( "hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p06" ),
-        MinN = cms.int32( 1 ),
-        IsolatorPSet = cms.PSet(  ),
-        CandTag = cms.InputTag( "hltPhase2L3MuonCandidates" ),
-        DepTag = cms.VInputTag( 'hltPhase2L3MuonsTrkIsoRegionaldR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p06' )
-    )
-
 
     process.hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0 = cms.EDProducer("L3MuonCombinedRelativeIsolationProducer",
         CaloDepositsLabel = cms.InputTag("notUsed"),
@@ -5654,27 +5588,11 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
 
     process.hltL3crIsoL1TkSingleMu22L3f24QL3trkIsoRegionalNewFiltered0p07EcalHcalHgcalTrk = cms.EDFilter( "HLTMuonIsoFilter",
         saveTags = cms.bool( True ),
-        PreviousCandTag = cms.InputTag( "hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p06" ),
+        PreviousCandTag = cms.InputTag( "hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p07" ),
         MinN = cms.int32( 1 ),
         IsolatorPSet = cms.PSet(  ),
         CandTag = cms.InputTag( "hltPhase2L3MuonCandidates" ),
         DepTag = cms.VInputTag( 'hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p07' )
-    )
-
-    process.HLTPhase2L3MuonIsoSequenceTrkRegionalOldIgnoreFilters = cms.Sequence(
-        process.HLTPhase2L3MuonCaloIsoSequenceIgnoreFilters + 
-
-        process.HLTTrackReconstructionForIsoPhase2L3MuonIter02 +
-        process.hltPhase2L3MuonsTrkIsoRegionaldR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p06 +
-        cms.ignore( process.hltL3crIsoL1TkSingleMu22L3f24QL3trkIsoRegionalOldFiltered0p07EcalHcalHgcalTrk )
-    )
-
-    process.HLTPhase2L3MuonIsoSequenceTrkRegionalOld = cms.Sequence(
-        process.HLTPhase2L3MuonCaloIsoSequence + 
-
-        process.HLTTrackReconstructionForIsoPhase2L3MuonIter02 +
-        process.hltPhase2L3MuonsTrkIsoRegionaldR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p06 +
-        process.hltL3crIsoL1TkSingleMu22L3f24QL3trkIsoRegionalOldFiltered0p07EcalHcalHgcalTrk
     )
 
     process.HLTPhase2L3MuonIsoSequenceTrkRegionalNewIgnoreFilters = cms.Sequence(
