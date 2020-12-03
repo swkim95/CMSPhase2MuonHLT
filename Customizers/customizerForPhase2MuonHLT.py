@@ -5638,11 +5638,12 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
     )
 
     process.HLTPhase2L3MuonIsoSequenceTrkRegionalNew = cms.Sequence(
-        process.HLTPhase2L3MuonCaloIsoSequence + 
+        # HERE tmp
+        # process.HLTPhase2L3MuonCaloIsoSequence + 
 
-        process.tracking_v6_1_L3Muon_NoVertexReco +
-        process.hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p07 +
-        process.hltL3crIsoL1TkSingleMu22L3f24QL3trkIsoRegionalNewFiltered0p07EcalHcalHgcalTrk
+        # process.tracking_v6_1_L3Muon_NoVertexReco +
+        # process.hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p07 +
+        # process.hltL3crIsoL1TkSingleMu22L3f24QL3trkIsoRegionalNewFiltered0p07EcalHcalHgcalTrk
     )
 
     return process
@@ -5654,7 +5655,7 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
     process = customizePhase2MuonHLTEcalIsolation(process)
     process = customizePhase2MuonHLTHcalIsolation(process)
     process = customizePhase2MuonHLTHgcalLCIsolation(process)
-    process = customizePhase2MuonHLTHgcalPFIsolation(process)
+    # process = customizePhase2MuonHLTHgcalPFIsolation(process)
     process = customizePhase2MuonHLTTrkIsolationRegional(process)
     process = customizePhase2MuonHLTTrkIsolationRegionalNew(process)
     process = customizePhase2MuonHLTTrkIsolationFull(process)
@@ -5675,10 +5676,11 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
         process.HLTHgcalTiclLayerClusteringForMuons +
         process.hltPhase2L3MuonsHgcalLCIsoBase +
 
+        # HERE tmp
         # process.HLTHgcalTiclPFClusteringForMuons +
         # process.hgcalDigis +
-        process.hgcalLocalRecoSequence +
-        process.hltPhase2L3MuonsHgcalIsoBase +
+        # process.hgcalLocalRecoSequence +
+        # process.hltPhase2L3MuonsHgcalIsoBase +
 
         process.HLTTrackReconstructionForIsoPhase2L3MuonIter02 +
         process.hltPhase2L3MuonsTrkIsoBase +
