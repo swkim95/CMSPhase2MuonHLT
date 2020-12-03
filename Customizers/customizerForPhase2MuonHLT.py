@@ -5535,6 +5535,7 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         cms.ignore( process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p40 ) +
 
         # process.HLTHgcalTiclPFClusteringForMuons +
+        process.hgcalDigis +
         process.hgcalLocalRecoSequence +
         process.hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p000 +
         cms.ignore( process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p07 )
@@ -5554,6 +5555,7 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p40 +
 
         # process.HLTHgcalTiclPFClusteringForMuons +
+        process.hgcalDigis +
         process.hgcalLocalRecoSequence +
         process.hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p000 +
         process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p07
@@ -5674,6 +5676,7 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
         process.hltPhase2L3MuonsHgcalLCIsoBase +
 
         # process.HLTHgcalTiclPFClusteringForMuons +
+        # process.hgcalDigis +
         process.hgcalLocalRecoSequence +
         process.hltPhase2L3MuonsHgcalIsoBase +
 
