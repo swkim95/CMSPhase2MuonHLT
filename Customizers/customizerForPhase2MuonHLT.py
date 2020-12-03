@@ -4354,51 +4354,51 @@ def customizePhase2MuonHLTHgcalPFIsolation(process, processName = "MYHLT"):
     #     )
     # )
 
-    process.particleFlowClusterHGCalFromTICL = cms.EDProducer("PFClusterProducer",
-        energyCorrector = cms.PSet(
+    # process.particleFlowClusterHGCalFromTICL = cms.EDProducer("PFClusterProducer",
+    #     energyCorrector = cms.PSet(
 
-        ),
-        initialClusteringStep = cms.PSet(
-            algoName = cms.string('PFClusterFromHGCalMultiCluster'),
-            clusterSrc = cms.InputTag("ticlMultiClustersFromTrackstersEM"),
-            thresholdsByDetector = cms.VPSet()
-        ),
-        pfClusterBuilder = cms.PSet(
+    #     ),
+    #     initialClusteringStep = cms.PSet(
+    #         algoName = cms.string('PFClusterFromHGCalMultiCluster'),
+    #         clusterSrc = cms.InputTag("ticlMultiClustersFromTrackstersEM"),
+    #         thresholdsByDetector = cms.VPSet()
+    #     ),
+    #     pfClusterBuilder = cms.PSet(
 
-        ),
-        positionReCalc = cms.PSet(
-            algoName = cms.string('Cluster3DPCACalculator'),
-            minFractionInCalc = cms.double(1e-09),
-            updateTiming = cms.bool(False)
-        ),
-        recHitCleaners = cms.VPSet(),
-        recHitsSource = cms.InputTag("particleFlowRecHitHGC"),
-        seedCleaners = cms.VPSet(),
-        seedFinder = cms.PSet(
-            algoName = cms.string('PassThruSeedFinder'),
-            nNeighbours = cms.int32(8),
-            thresholdsByDetector = cms.VPSet()
-        )
-    )
+    #     ),
+    #     positionReCalc = cms.PSet(
+    #         algoName = cms.string('Cluster3DPCACalculator'),
+    #         minFractionInCalc = cms.double(1e-09),
+    #         updateTiming = cms.bool(False)
+    #     ),
+    #     recHitCleaners = cms.VPSet(),
+    #     recHitsSource = cms.InputTag("particleFlowRecHitHGC"),
+    #     seedCleaners = cms.VPSet(),
+    #     seedFinder = cms.PSet(
+    #         algoName = cms.string('PassThruSeedFinder'),
+    #         nNeighbours = cms.int32(8),
+    #         thresholdsByDetector = cms.VPSet()
+    #     )
+    # )
 
-    process.HLTHgcalTiclPFClusteringForMuons = cms.Sequence(
-        process.hgcalDigis + 
-        process.HGCalUncalibRecHit + 
-        process.HGCalRecHit + 
-        process.hgcalLayerClusters + 
-        process.filteredLayerClustersTrk + 
-        process.ticlLayerTileProducer + 
-        process.ticlSeedingTrk + 
-        process.ticlTrackstersTrk + 
-        process.filteredLayerClustersEM + 
-        process.ticlSeedingGlobal + 
-        process.ticlTrackstersEM + 
-        process.ticlMultiClustersFromTrackstersEM + 
-        process.particleFlowRecHitHGC + 
-        process.particleFlowClusterHGCalFromTICL
-        # offlineBeamSpot + 
-        # particleFlowSuperClusterHGCalFromTICL
-    )
+    # process.HLTHgcalTiclPFClusteringForMuons = cms.Sequence(
+    #     process.hgcalDigis + 
+    #     process.HGCalUncalibRecHit + 
+    #     process.HGCalRecHit + 
+    #     process.hgcalLayerClusters + 
+    #     process.filteredLayerClustersTrk + 
+    #     process.ticlLayerTileProducer + 
+    #     process.ticlSeedingTrk + 
+    #     process.ticlTrackstersTrk + 
+    #     process.filteredLayerClustersEM + 
+    #     process.ticlSeedingGlobal + 
+    #     process.ticlTrackstersEM + 
+    #     process.ticlMultiClustersFromTrackstersEM + 
+    #     process.particleFlowRecHitHGC + 
+    #     process.particleFlowClusterHGCalFromTICL
+    #     # offlineBeamSpot + 
+    #     # particleFlowSuperClusterHGCalFromTICL
+    # )
 
     process.hltPhase2L3MuonsHgcalIsoBase = cms.EDProducer("MuonHLTEcalPFClusterIsolationProducer",
         absEtaLowEdges = cms.vdouble(0.0, 1.479),
@@ -4411,7 +4411,7 @@ def customizePhase2MuonHLTHgcalPFIsolation(process, processName = "MYHLT"):
         energyEndcap = cms.double(0.0),
         etaStripBarrel = cms.double(0.0),
         etaStripEndcap = cms.double(0.0),
-        pfClusterProducer = cms.InputTag("particleFlowClusterHGCalFromTICL"),
+        pfClusterProducer = cms.InputTag("particleFlowClusterHGCalFromMultiCl"),  # particleFlowClusterHGCalFromTICL
         recoCandidateProducer = cms.InputTag("hltPhase2L3MuonCandidates"),  # HERE
         rhoMax = cms.double(99999999.0),
         rhoProducer = cms.InputTag("hltFixedGridRhoFastjetAllCaloForMuons"),
@@ -4427,18 +4427,6 @@ def customizePhase2MuonHLTHgcalLCIsolation(process, processName = "MYHLT"):
         process.HGCalUncalibRecHit + 
         process.HGCalRecHit + 
         process.hgcalLayerClusters
-        # process.filteredLayerClustersTrk + 
-        # process.ticlLayerTileProducer + 
-        # process.ticlSeedingTrk + 
-        # process.ticlTrackstersTrk + 
-        # process.filteredLayerClustersEM + 
-        # process.ticlSeedingGlobal + 
-        # process.ticlTrackstersEM + 
-        # process.ticlMultiClustersFromTrackstersEM + 
-        # process.particleFlowRecHitHGC + 
-        # process.particleFlowClusterHGCalFromTICL
-        # offlineBeamSpot + 
-        # particleFlowSuperClusterHGCalFromTICL
     )
 
     process.hltPhase2L3MuonsHgcalLCIsoBase = cms.EDProducer("MuonHLTHGCalLayerClusterIsolationProducer",
@@ -5457,7 +5445,7 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         energyEndcap = cms.double(0.0),
         etaStripBarrel = cms.double(0.0),
         etaStripEndcap = cms.double(0.0),
-        pfClusterProducer = cms.InputTag("particleFlowClusterHGCalFromTICL"),
+        pfClusterProducer = cms.InputTag("particleFlowClusterHGCalFromMultiCl"),  # particleFlowClusterHGCalFromTICL
         recoCandidateProducer = cms.InputTag("hltPhase2L3MuonCandidates"),
         rhoMax = cms.double(99999999.0),
         rhoProducer = cms.InputTag("hltFixedGridRhoFastjetAllCaloForMuons"),
@@ -5546,7 +5534,8 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         process.hltPhase2L3MuonsHcalIsodR0p3dRVeto0p000 +
         cms.ignore( process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p40 ) +
 
-        process.HLTHgcalTiclPFClusteringForMuons +
+        # process.HLTHgcalTiclPFClusteringForMuons +
+        process.hgcalLocalRecoSequence +
         process.hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p000 +
         cms.ignore( process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p07 )
     )
@@ -5564,7 +5553,8 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
         process.hltPhase2L3MuonsHcalIsodR0p3dRVeto0p000 +
         process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p40 +
 
-        process.HLTHgcalTiclPFClusteringForMuons +
+        # process.HLTHgcalTiclPFClusteringForMuons +
+        process.hgcalLocalRecoSequence +
         process.hltPhase2L3MuonsHgcalIsodR0p3dRVeto0p000 +
         process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered0p07
     )
@@ -5680,10 +5670,12 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
         process.HLTPFHcalClusteringForMuons +
         process.hltPhase2L3MuonsHcalIsoBase +
 
-        process.HLTHgcalTiclPFClusteringForMuons +
-        process.hltPhase2L3MuonsHgcalIsoBase +
-
+        process.HLTHgcalTiclLayerClusteringForMuons +
         process.hltPhase2L3MuonsHgcalLCIsoBase +
+
+        # process.HLTHgcalTiclPFClusteringForMuons +
+        process.hgcalLocalRecoSequence +
+        process.hltPhase2L3MuonsHgcalIsoBase +
 
         process.HLTTrackReconstructionForIsoPhase2L3MuonIter02 +
         process.hltPhase2L3MuonsTrkIsoBase +
