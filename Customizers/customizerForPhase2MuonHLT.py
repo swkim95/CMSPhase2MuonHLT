@@ -4010,376 +4010,376 @@ def customizePhase2MuonHLTHcalIsolation(process, processName = "MYHLT"):
 
     return process
 
-def customizePhase2MuonHLTHgcalIsolation(process, processName = "MYHLT"):
+def customizePhase2MuonHLTHgcalPFIsolation(process, processName = "MYHLT"):
 
-    process.hgcalDigis = cms.EDProducer("HGCalRawToDigiFake",
-        bhDigis = cms.InputTag("simHGCalUnsuppressedDigis","HEback"),
-        eeDigis = cms.InputTag("simHGCalUnsuppressedDigis","EE"),
-        fhDigis = cms.InputTag("simHGCalUnsuppressedDigis","HEfront"),
-        mightGet = cms.optional.untracked.vstring
-    )
+    # process.hgcalDigis = cms.EDProducer("HGCalRawToDigiFake",
+    #     bhDigis = cms.InputTag("simHGCalUnsuppressedDigis","HEback"),
+    #     eeDigis = cms.InputTag("simHGCalUnsuppressedDigis","EE"),
+    #     fhDigis = cms.InputTag("simHGCalUnsuppressedDigis","HEfront"),
+    #     mightGet = cms.optional.untracked.vstring
+    # )
 
-    process.HGCalUncalibRecHit = cms.EDProducer("HGCalUncalibRecHitProducer",
-        HGCEEConfig = cms.PSet(
-            adcNbits = cms.uint32(10),
-            adcSaturation = cms.double(100),
-            fCPerMIP = cms.vdouble(2.06, 3.43, 5.15),
-            isSiFE = cms.bool(True),
-            tdcNbits = cms.uint32(12),
-            tdcOnset = cms.double(60),
-            tdcSaturation = cms.double(10000),
-            toaLSB_ns = cms.double(0.0244)
-        ),
-        HGCEEdigiCollection = cms.InputTag("hgcalDigis","EE"),
-        HGCEEhitCollection = cms.string('HGCEEUncalibRecHits'),
-        HGCHEBConfig = cms.PSet(
-            adcNbits = cms.uint32(10),
-            adcSaturation = cms.double(68.75),
-            fCPerMIP = cms.vdouble(1.0, 1.0, 1.0),
-            isSiFE = cms.bool(True),
-            tdcNbits = cms.uint32(12),
-            tdcOnset = cms.double(55),
-            tdcSaturation = cms.double(1000),
-            toaLSB_ns = cms.double(0.0244)
-        ),
-        HGCHEBdigiCollection = cms.InputTag("hgcalDigis","HEback"),
-        HGCHEBhitCollection = cms.string('HGCHEBUncalibRecHits'),
-        HGCHEFConfig = cms.PSet(
-            adcNbits = cms.uint32(10),
-            adcSaturation = cms.double(100),
-            fCPerMIP = cms.vdouble(2.06, 3.43, 5.15),
-            isSiFE = cms.bool(True),
-            tdcNbits = cms.uint32(12),
-            tdcOnset = cms.double(60),
-            tdcSaturation = cms.double(10000),
-            toaLSB_ns = cms.double(0.0244)
-        ),
-        HGCHEFdigiCollection = cms.InputTag("hgcalDigis","HEfront"),
-        HGCHEFhitCollection = cms.string('HGCHEFUncalibRecHits'),
-        HGCHFNoseConfig = cms.PSet(
-            adcNbits = cms.uint32(10),
-            adcSaturation = cms.double(100),
-            fCPerMIP = cms.vdouble(1.25, 2.57, 3.88),
-            isSiFE = cms.bool(False),
-            tdcNbits = cms.uint32(12),
-            tdcOnset = cms.double(60),
-            tdcSaturation = cms.double(10000),
-            toaLSB_ns = cms.double(0.0244)
-        ),
-        HGCHFNosedigiCollection = cms.InputTag("hfnoseDigis","HFNose"),
-        HGCHFNosehitCollection = cms.string('HGCHFNoseUncalibRecHits'),
-        algo = cms.string('HGCalUncalibRecHitWorkerWeights')
-    )
+    # process.HGCalUncalibRecHit = cms.EDProducer("HGCalUncalibRecHitProducer",
+    #     HGCEEConfig = cms.PSet(
+    #         adcNbits = cms.uint32(10),
+    #         adcSaturation = cms.double(100),
+    #         fCPerMIP = cms.vdouble(2.06, 3.43, 5.15),
+    #         isSiFE = cms.bool(True),
+    #         tdcNbits = cms.uint32(12),
+    #         tdcOnset = cms.double(60),
+    #         tdcSaturation = cms.double(10000),
+    #         toaLSB_ns = cms.double(0.0244)
+    #     ),
+    #     HGCEEdigiCollection = cms.InputTag("hgcalDigis","EE"),
+    #     HGCEEhitCollection = cms.string('HGCEEUncalibRecHits'),
+    #     HGCHEBConfig = cms.PSet(
+    #         adcNbits = cms.uint32(10),
+    #         adcSaturation = cms.double(68.75),
+    #         fCPerMIP = cms.vdouble(1.0, 1.0, 1.0),
+    #         isSiFE = cms.bool(True),
+    #         tdcNbits = cms.uint32(12),
+    #         tdcOnset = cms.double(55),
+    #         tdcSaturation = cms.double(1000),
+    #         toaLSB_ns = cms.double(0.0244)
+    #     ),
+    #     HGCHEBdigiCollection = cms.InputTag("hgcalDigis","HEback"),
+    #     HGCHEBhitCollection = cms.string('HGCHEBUncalibRecHits'),
+    #     HGCHEFConfig = cms.PSet(
+    #         adcNbits = cms.uint32(10),
+    #         adcSaturation = cms.double(100),
+    #         fCPerMIP = cms.vdouble(2.06, 3.43, 5.15),
+    #         isSiFE = cms.bool(True),
+    #         tdcNbits = cms.uint32(12),
+    #         tdcOnset = cms.double(60),
+    #         tdcSaturation = cms.double(10000),
+    #         toaLSB_ns = cms.double(0.0244)
+    #     ),
+    #     HGCHEFdigiCollection = cms.InputTag("hgcalDigis","HEfront"),
+    #     HGCHEFhitCollection = cms.string('HGCHEFUncalibRecHits'),
+    #     HGCHFNoseConfig = cms.PSet(
+    #         adcNbits = cms.uint32(10),
+    #         adcSaturation = cms.double(100),
+    #         fCPerMIP = cms.vdouble(1.25, 2.57, 3.88),
+    #         isSiFE = cms.bool(False),
+    #         tdcNbits = cms.uint32(12),
+    #         tdcOnset = cms.double(60),
+    #         tdcSaturation = cms.double(10000),
+    #         toaLSB_ns = cms.double(0.0244)
+    #     ),
+    #     HGCHFNosedigiCollection = cms.InputTag("hfnoseDigis","HFNose"),
+    #     HGCHFNosehitCollection = cms.string('HGCHFNoseUncalibRecHits'),
+    #     algo = cms.string('HGCalUncalibRecHitWorkerWeights')
+    # )
 
-    process.HGCalRecHit = cms.EDProducer("HGCalRecHitProducer",
-        HGCEE_cce = cms.PSet(
-            refToPSet_ = cms.string('HGCAL_chargeCollectionEfficiencies')
-        ),
-        HGCEE_fCPerMIP = cms.vdouble(2.06, 3.43, 5.15),
-        HGCEE_isSiFE = cms.bool(True),
-        HGCEE_keV2DIGI = cms.double(0.044259),
-        HGCEE_noise_fC = cms.PSet(
-            refToPSet_ = cms.string('HGCAL_noise_fC')
-        ),
-        HGCEErechitCollection = cms.string('HGCEERecHits'),
-        HGCEEuncalibRecHitCollection = cms.InputTag("HGCalUncalibRecHit","HGCEEUncalibRecHits"),
-        HGCHEB_isSiFE = cms.bool(True),
-        HGCHEB_keV2DIGI = cms.double(0.00148148148148),
-        HGCHEB_noise_MIP = cms.PSet(
-            refToPSet_ = cms.string('HGCAL_noise_heback')
-        ),
-        HGCHEBrechitCollection = cms.string('HGCHEBRecHits'),
-        HGCHEBuncalibRecHitCollection = cms.InputTag("HGCalUncalibRecHit","HGCHEBUncalibRecHits"),
-        HGCHEF_cce = cms.PSet(
-            refToPSet_ = cms.string('HGCAL_chargeCollectionEfficiencies')
-        ),
-        HGCHEF_fCPerMIP = cms.vdouble(2.06, 3.43, 5.15),
-        HGCHEF_isSiFE = cms.bool(True),
-        HGCHEF_keV2DIGI = cms.double(0.044259),
-        HGCHEF_noise_fC = cms.PSet(
-            refToPSet_ = cms.string('HGCAL_noise_fC')
-        ),
-        HGCHEFrechitCollection = cms.string('HGCHEFRecHits'),
-        HGCHEFuncalibRecHitCollection = cms.InputTag("HGCalUncalibRecHit","HGCHEFUncalibRecHits"),
-        HGCHFNose_cce = cms.PSet(
-            refToPSet_ = cms.string('HGCAL_chargeCollectionEfficiencies')
-        ),
-        HGCHFNose_fCPerMIP = cms.vdouble(1.25, 2.57, 3.88),
-        HGCHFNose_isSiFE = cms.bool(False),
-        HGCHFNose_keV2DIGI = cms.double(0.044259),
-        HGCHFNose_noise_fC = cms.PSet(
-            refToPSet_ = cms.string('HGCAL_noise_fC')
-        ),
-        HGCHFNoserechitCollection = cms.string('HGCHFNoseRecHits'),
-        HGCHFNoseuncalibRecHitCollection = cms.InputTag("HGCalUncalibRecHit","HGCHFNoseUncalibRecHits"),
-        algo = cms.string('HGCalRecHitWorkerSimple'),
-        constSiPar = cms.double(0.02),
-        deltasi_index_regemfac = cms.int32(3),
-        layerNoseWeights = cms.vdouble(
-            0.0, 39.500245, 39.756638, 39.756638, 39.756638, 
-            39.756638, 66.020266, 92.283895, 92.283895
-        ),
-        layerWeights = cms.vdouble(
-            0.0, 8.894541, 10.937907, 10.937907, 10.937907, 
-            10.937907, 10.937907, 10.937907, 10.937907, 10.937907, 
-            10.932882, 10.932882, 10.937907, 10.937907, 10.938169, 
-            10.938169, 10.938169, 10.938169, 10.938169, 10.938169, 
-            10.938169, 10.938169, 10.938169, 10.938169, 10.938169, 
-            10.938169, 10.938169, 10.938169, 32.332097, 51.574301, 
-            51.444192, 51.444192, 51.444192, 51.444192, 51.444192, 
-            51.444192, 51.444192, 51.444192, 51.444192, 51.444192, 
-            69.513118, 87.582044, 87.582044, 87.582044, 87.582044, 
-            87.582044, 87.214571, 86.888309, 86.92952, 86.92952, 
-            86.92952
-        ),
-        maxValSiPar = cms.double(10000.0),
-        minValSiPar = cms.double(10.0),
-        noiseSiPar = cms.double(5.5),
-        rangeMask = cms.uint32(4294442496),
-        rangeMatch = cms.uint32(1161838592),
-        sciThicknessCorrection = cms.double(0.9),
-        thicknessCorrection = cms.vdouble(
-            0.77, 0.77, 0.77, 0.84, 0.84, 
-            0.84
-        ),
-        thicknessNoseCorrection = cms.vdouble(1.132, 1.092, 1.084)
-    )
+    # process.HGCalRecHit = cms.EDProducer("HGCalRecHitProducer",
+    #     HGCEE_cce = cms.PSet(
+    #         refToPSet_ = cms.string('HGCAL_chargeCollectionEfficiencies')
+    #     ),
+    #     HGCEE_fCPerMIP = cms.vdouble(2.06, 3.43, 5.15),
+    #     HGCEE_isSiFE = cms.bool(True),
+    #     HGCEE_keV2DIGI = cms.double(0.044259),
+    #     HGCEE_noise_fC = cms.PSet(
+    #         refToPSet_ = cms.string('HGCAL_noise_fC')
+    #     ),
+    #     HGCEErechitCollection = cms.string('HGCEERecHits'),
+    #     HGCEEuncalibRecHitCollection = cms.InputTag("HGCalUncalibRecHit","HGCEEUncalibRecHits"),
+    #     HGCHEB_isSiFE = cms.bool(True),
+    #     HGCHEB_keV2DIGI = cms.double(0.00148148148148),
+    #     HGCHEB_noise_MIP = cms.PSet(
+    #         refToPSet_ = cms.string('HGCAL_noise_heback')
+    #     ),
+    #     HGCHEBrechitCollection = cms.string('HGCHEBRecHits'),
+    #     HGCHEBuncalibRecHitCollection = cms.InputTag("HGCalUncalibRecHit","HGCHEBUncalibRecHits"),
+    #     HGCHEF_cce = cms.PSet(
+    #         refToPSet_ = cms.string('HGCAL_chargeCollectionEfficiencies')
+    #     ),
+    #     HGCHEF_fCPerMIP = cms.vdouble(2.06, 3.43, 5.15),
+    #     HGCHEF_isSiFE = cms.bool(True),
+    #     HGCHEF_keV2DIGI = cms.double(0.044259),
+    #     HGCHEF_noise_fC = cms.PSet(
+    #         refToPSet_ = cms.string('HGCAL_noise_fC')
+    #     ),
+    #     HGCHEFrechitCollection = cms.string('HGCHEFRecHits'),
+    #     HGCHEFuncalibRecHitCollection = cms.InputTag("HGCalUncalibRecHit","HGCHEFUncalibRecHits"),
+    #     HGCHFNose_cce = cms.PSet(
+    #         refToPSet_ = cms.string('HGCAL_chargeCollectionEfficiencies')
+    #     ),
+    #     HGCHFNose_fCPerMIP = cms.vdouble(1.25, 2.57, 3.88),
+    #     HGCHFNose_isSiFE = cms.bool(False),
+    #     HGCHFNose_keV2DIGI = cms.double(0.044259),
+    #     HGCHFNose_noise_fC = cms.PSet(
+    #         refToPSet_ = cms.string('HGCAL_noise_fC')
+    #     ),
+    #     HGCHFNoserechitCollection = cms.string('HGCHFNoseRecHits'),
+    #     HGCHFNoseuncalibRecHitCollection = cms.InputTag("HGCalUncalibRecHit","HGCHFNoseUncalibRecHits"),
+    #     algo = cms.string('HGCalRecHitWorkerSimple'),
+    #     constSiPar = cms.double(0.02),
+    #     deltasi_index_regemfac = cms.int32(3),
+    #     layerNoseWeights = cms.vdouble(
+    #         0.0, 39.500245, 39.756638, 39.756638, 39.756638, 
+    #         39.756638, 66.020266, 92.283895, 92.283895
+    #     ),
+    #     layerWeights = cms.vdouble(
+    #         0.0, 8.894541, 10.937907, 10.937907, 10.937907, 
+    #         10.937907, 10.937907, 10.937907, 10.937907, 10.937907, 
+    #         10.932882, 10.932882, 10.937907, 10.937907, 10.938169, 
+    #         10.938169, 10.938169, 10.938169, 10.938169, 10.938169, 
+    #         10.938169, 10.938169, 10.938169, 10.938169, 10.938169, 
+    #         10.938169, 10.938169, 10.938169, 32.332097, 51.574301, 
+    #         51.444192, 51.444192, 51.444192, 51.444192, 51.444192, 
+    #         51.444192, 51.444192, 51.444192, 51.444192, 51.444192, 
+    #         69.513118, 87.582044, 87.582044, 87.582044, 87.582044, 
+    #         87.582044, 87.214571, 86.888309, 86.92952, 86.92952, 
+    #         86.92952
+    #     ),
+    #     maxValSiPar = cms.double(10000.0),
+    #     minValSiPar = cms.double(10.0),
+    #     noiseSiPar = cms.double(5.5),
+    #     rangeMask = cms.uint32(4294442496),
+    #     rangeMatch = cms.uint32(1161838592),
+    #     sciThicknessCorrection = cms.double(0.9),
+    #     thicknessCorrection = cms.vdouble(
+    #         0.77, 0.77, 0.77, 0.84, 0.84, 
+    #         0.84
+    #     ),
+    #     thicknessNoseCorrection = cms.vdouble(1.132, 1.092, 1.084)
+    # )
 
-    process.hgcalLayerClusters = cms.EDProducer("HGCalLayerClusterProducer",
-        HFNoseInput = cms.InputTag("HGCalRecHit","HGCHFNoseRecHits"),
-        HGCBHInput = cms.InputTag("HGCalRecHit","HGCHEBRecHits"),
-        HGCEEInput = cms.InputTag("HGCalRecHit","HGCEERecHits"),
-        HGCFHInput = cms.InputTag("HGCalRecHit","HGCHEFRecHits"),
-        detector = cms.string('all'),
-        doSharing = cms.bool(False),
-        mightGet = cms.optional.untracked.vstring,
-        nHitsTime = cms.uint32(3),
-        plugin = cms.PSet(
-            dEdXweights = cms.vdouble(
-                0.0, 8.894541, 10.937907, 10.937907, 10.937907, 
-                10.937907, 10.937907, 10.937907, 10.937907, 10.937907, 
-                10.932882, 10.932882, 10.937907, 10.937907, 10.938169, 
-                10.938169, 10.938169, 10.938169, 10.938169, 10.938169, 
-                10.938169, 10.938169, 10.938169, 10.938169, 10.938169, 
-                10.938169, 10.938169, 10.938169, 32.332097, 51.574301, 
-                51.444192, 51.444192, 51.444192, 51.444192, 51.444192, 
-                51.444192, 51.444192, 51.444192, 51.444192, 51.444192, 
-                69.513118, 87.582044, 87.582044, 87.582044, 87.582044, 
-                87.582044, 87.214571, 86.888309, 86.92952, 86.92952, 
-                86.92952
-            ),
-            deltac = cms.vdouble(1.3, 1.3, 5, 0.0315),
-            dependSensor = cms.bool(True),
-            ecut = cms.double(3),
-            fcPerEle = cms.double(0.00016020506),
-            fcPerMip = cms.vdouble(2.06, 3.43, 5.15),
-            kappa = cms.double(9),
-            noiseMip = cms.PSet(
-                refToPSet_ = cms.string('HGCAL_noise_heback')
-            ),
-            noises = cms.PSet(
-                refToPSet_ = cms.string('HGCAL_noises')
-            ),
-            thicknessCorrection = cms.vdouble(
-                0.77, 0.77, 0.77, 0.84, 0.84, 
-                0.84
-            ),
-            thresholdW0 = cms.vdouble(2.9, 2.9, 2.9),
-            type = cms.string('CLUE'),
-            use2x2 = cms.bool(True),
-            verbosity = cms.untracked.uint32(3)
-        ),
-        timeClname = cms.string('timeLayerCluster'),
-        timeOffset = cms.double(5)
-    )
+    # process.hgcalLayerClusters = cms.EDProducer("HGCalLayerClusterProducer",
+    #     HFNoseInput = cms.InputTag("HGCalRecHit","HGCHFNoseRecHits"),
+    #     HGCBHInput = cms.InputTag("HGCalRecHit","HGCHEBRecHits"),
+    #     HGCEEInput = cms.InputTag("HGCalRecHit","HGCEERecHits"),
+    #     HGCFHInput = cms.InputTag("HGCalRecHit","HGCHEFRecHits"),
+    #     detector = cms.string('all'),
+    #     doSharing = cms.bool(False),
+    #     mightGet = cms.optional.untracked.vstring,
+    #     nHitsTime = cms.uint32(3),
+    #     plugin = cms.PSet(
+    #         dEdXweights = cms.vdouble(
+    #             0.0, 8.894541, 10.937907, 10.937907, 10.937907, 
+    #             10.937907, 10.937907, 10.937907, 10.937907, 10.937907, 
+    #             10.932882, 10.932882, 10.937907, 10.937907, 10.938169, 
+    #             10.938169, 10.938169, 10.938169, 10.938169, 10.938169, 
+    #             10.938169, 10.938169, 10.938169, 10.938169, 10.938169, 
+    #             10.938169, 10.938169, 10.938169, 32.332097, 51.574301, 
+    #             51.444192, 51.444192, 51.444192, 51.444192, 51.444192, 
+    #             51.444192, 51.444192, 51.444192, 51.444192, 51.444192, 
+    #             69.513118, 87.582044, 87.582044, 87.582044, 87.582044, 
+    #             87.582044, 87.214571, 86.888309, 86.92952, 86.92952, 
+    #             86.92952
+    #         ),
+    #         deltac = cms.vdouble(1.3, 1.3, 5, 0.0315),
+    #         dependSensor = cms.bool(True),
+    #         ecut = cms.double(3),
+    #         fcPerEle = cms.double(0.00016020506),
+    #         fcPerMip = cms.vdouble(2.06, 3.43, 5.15),
+    #         kappa = cms.double(9),
+    #         noiseMip = cms.PSet(
+    #             refToPSet_ = cms.string('HGCAL_noise_heback')
+    #         ),
+    #         noises = cms.PSet(
+    #             refToPSet_ = cms.string('HGCAL_noises')
+    #         ),
+    #         thicknessCorrection = cms.vdouble(
+    #             0.77, 0.77, 0.77, 0.84, 0.84, 
+    #             0.84
+    #         ),
+    #         thresholdW0 = cms.vdouble(2.9, 2.9, 2.9),
+    #         type = cms.string('CLUE'),
+    #         use2x2 = cms.bool(True),
+    #         verbosity = cms.untracked.uint32(3)
+    #     ),
+    #     timeClname = cms.string('timeLayerCluster'),
+    #     timeOffset = cms.double(5)
+    # )
 
-    process.filteredLayerClustersTrk = cms.EDProducer("FilteredLayerClustersProducer",
-        HGCLayerClusters = cms.InputTag("hgcalLayerClusters"),
-        LayerClustersInputMask = cms.InputTag("hgcalLayerClusters","InitialLayerClustersMask"),
-        algo_number = cms.int32(8),
-        clusterFilter = cms.string('ClusterFilterByAlgo'),
-        iteration_label = cms.string('Trk'),
-        max_cluster_size = cms.int32(9999),
-        mightGet = cms.optional.untracked.vstring,
-        min_cluster_size = cms.int32(0)
-    )
+    # process.filteredLayerClustersTrk = cms.EDProducer("FilteredLayerClustersProducer",
+    #     HGCLayerClusters = cms.InputTag("hgcalLayerClusters"),
+    #     LayerClustersInputMask = cms.InputTag("hgcalLayerClusters","InitialLayerClustersMask"),
+    #     algo_number = cms.int32(8),
+    #     clusterFilter = cms.string('ClusterFilterByAlgo'),
+    #     iteration_label = cms.string('Trk'),
+    #     max_cluster_size = cms.int32(9999),
+    #     mightGet = cms.optional.untracked.vstring,
+    #     min_cluster_size = cms.int32(0)
+    # )
 
-    process.ticlLayerTileProducer = cms.EDProducer("TICLLayerTileProducer",
-        layer_clusters = cms.InputTag("hgcalLayerClusters"),
-        mightGet = cms.optional.untracked.vstring
-    )
+    # process.ticlLayerTileProducer = cms.EDProducer("TICLLayerTileProducer",
+    #     layer_clusters = cms.InputTag("hgcalLayerClusters"),
+    #     mightGet = cms.optional.untracked.vstring
+    # )
 
-    process.ticlSeedingTrk = cms.EDProducer("TICLSeedingRegionProducer",
-        algoId = cms.int32(2),
-        algo_verbosity = cms.int32(0),
-        cutTk = cms.string('1.48 < abs(eta) < 3.0 && pt > 1. && quality("highPurity") && hitPattern().numberOfLostHits("MISSING_OUTER_HITS") < 10'),
-        mightGet = cms.optional.untracked.vstring,
-        propagator = cms.string('PropagatorWithMaterial'),
-        tracks = cms.InputTag("")
-    )
+    # process.ticlSeedingTrk = cms.EDProducer("TICLSeedingRegionProducer",
+    #     algoId = cms.int32(2),
+    #     algo_verbosity = cms.int32(0),
+    #     cutTk = cms.string('1.48 < abs(eta) < 3.0 && pt > 1. && quality("highPurity") && hitPattern().numberOfLostHits("MISSING_OUTER_HITS") < 10'),
+    #     mightGet = cms.optional.untracked.vstring,
+    #     propagator = cms.string('PropagatorWithMaterial'),
+    #     tracks = cms.InputTag("")
+    # )
 
-    process.ticlTrackstersTrk = cms.EDProducer("TrackstersProducer",
-        algo_verbosity = cms.int32(2),
-        eid_graph_path = cms.string('RecoHGCal/TICL/data/tf_models/energy_id_v0.pb'),
-        eid_input_name = cms.string('input'),
-        eid_min_cluster_energy = cms.double(1),
-        eid_n_clusters = cms.int32(10),
-        eid_n_layers = cms.int32(50),
-        eid_output_name_energy = cms.string('output/regressed_energy'),
-        eid_output_name_id = cms.string('output/id_probabilities'),
-        etaLimitIncreaseWindow = cms.double(2.1),
-        filter_on_categories = cms.vint32(2, 4),
-        filtered_mask = cms.InputTag("filteredLayerClustersTrk","Trk"),
-        itername = cms.string('TRK'),
-        layer_clusters = cms.InputTag("hgcalLayerClusters"),
-        layer_clusters_tiles = cms.InputTag("ticlLayerTileProducer"),
-        max_delta_time = cms.double(-1.0),
-        max_out_in_hops = cms.int32(10),
-        mightGet = cms.optional.untracked.vstring,
-        min_clusters_per_ntuplet = cms.int32(10),
-        min_cos_pointing = cms.double(0.798),
-        min_cos_theta = cms.double(0.866),
-        missing_layers = cms.int32(3),
-        oneTracksterPerTrackSeed = cms.bool(True),
-        original_mask = cms.InputTag("hgcalLayerClusters","InitialLayerClustersMask"),
-        out_in_dfs = cms.bool(True),
-        pid_threshold = cms.double(0),
-        promoteEmptyRegionToTrackster = cms.bool(True),
-        seeding_regions = cms.InputTag("ticlSeedingTrk"),
-        time_layerclusters = cms.InputTag("hgcalLayerClusters","timeLayerCluster")
-    )
+    # process.ticlTrackstersTrk = cms.EDProducer("TrackstersProducer",
+    #     algo_verbosity = cms.int32(2),
+    #     eid_graph_path = cms.string('RecoHGCal/TICL/data/tf_models/energy_id_v0.pb'),
+    #     eid_input_name = cms.string('input'),
+    #     eid_min_cluster_energy = cms.double(1),
+    #     eid_n_clusters = cms.int32(10),
+    #     eid_n_layers = cms.int32(50),
+    #     eid_output_name_energy = cms.string('output/regressed_energy'),
+    #     eid_output_name_id = cms.string('output/id_probabilities'),
+    #     etaLimitIncreaseWindow = cms.double(2.1),
+    #     filter_on_categories = cms.vint32(2, 4),
+    #     filtered_mask = cms.InputTag("filteredLayerClustersTrk","Trk"),
+    #     itername = cms.string('TRK'),
+    #     layer_clusters = cms.InputTag("hgcalLayerClusters"),
+    #     layer_clusters_tiles = cms.InputTag("ticlLayerTileProducer"),
+    #     max_delta_time = cms.double(-1.0),
+    #     max_out_in_hops = cms.int32(10),
+    #     mightGet = cms.optional.untracked.vstring,
+    #     min_clusters_per_ntuplet = cms.int32(10),
+    #     min_cos_pointing = cms.double(0.798),
+    #     min_cos_theta = cms.double(0.866),
+    #     missing_layers = cms.int32(3),
+    #     oneTracksterPerTrackSeed = cms.bool(True),
+    #     original_mask = cms.InputTag("hgcalLayerClusters","InitialLayerClustersMask"),
+    #     out_in_dfs = cms.bool(True),
+    #     pid_threshold = cms.double(0),
+    #     promoteEmptyRegionToTrackster = cms.bool(True),
+    #     seeding_regions = cms.InputTag("ticlSeedingTrk"),
+    #     time_layerclusters = cms.InputTag("hgcalLayerClusters","timeLayerCluster")
+    # )
 
-    process.filteredLayerClustersEM = cms.EDProducer("FilteredLayerClustersProducer",
-        HGCLayerClusters = cms.InputTag("hgcalLayerClusters"),
-        LayerClustersInputMask = cms.InputTag("ticlTrackstersTrk"),
-        algo_number = cms.int32(8),
-        clusterFilter = cms.string('ClusterFilterByAlgoAndSize'),
-        iteration_label = cms.string('EM'),
-        max_cluster_size = cms.int32(9999),
-        mightGet = cms.optional.untracked.vstring,
-        min_cluster_size = cms.int32(2)
-    )
+    # process.filteredLayerClustersEM = cms.EDProducer("FilteredLayerClustersProducer",
+    #     HGCLayerClusters = cms.InputTag("hgcalLayerClusters"),
+    #     LayerClustersInputMask = cms.InputTag("ticlTrackstersTrk"),
+    #     algo_number = cms.int32(8),
+    #     clusterFilter = cms.string('ClusterFilterByAlgoAndSize'),
+    #     iteration_label = cms.string('EM'),
+    #     max_cluster_size = cms.int32(9999),
+    #     mightGet = cms.optional.untracked.vstring,
+    #     min_cluster_size = cms.int32(2)
+    # )
 
-    process.ticlSeedingGlobal = cms.EDProducer("TICLSeedingRegionProducer",
-        algoId = cms.int32(2),
-        algo_verbosity = cms.int32(0),
-        cutTk = cms.string('1.48 < abs(eta) < 3.0 && pt > 1. && quality("highPurity") && hitPattern().numberOfLostHits("MISSING_OUTER_HITS") < 10'),
-        mightGet = cms.optional.untracked.vstring,
-        propagator = cms.string('PropagatorWithMaterial'),
-        tracks = cms.InputTag("")
-    )
+    # process.ticlSeedingGlobal = cms.EDProducer("TICLSeedingRegionProducer",
+    #     algoId = cms.int32(2),
+    #     algo_verbosity = cms.int32(0),
+    #     cutTk = cms.string('1.48 < abs(eta) < 3.0 && pt > 1. && quality("highPurity") && hitPattern().numberOfLostHits("MISSING_OUTER_HITS") < 10'),
+    #     mightGet = cms.optional.untracked.vstring,
+    #     propagator = cms.string('PropagatorWithMaterial'),
+    #     tracks = cms.InputTag("")
+    # )
 
-    process.ticlTrackstersEM = cms.EDProducer("TrackstersProducer",
-        algo_verbosity = cms.int32(0),
-        eid_graph_path = cms.string('RecoHGCal/TICL/data/tf_models/energy_id_v0.pb'),
-        eid_input_name = cms.string('input'),
-        eid_min_cluster_energy = cms.double(1),
-        eid_n_clusters = cms.int32(10),
-        eid_n_layers = cms.int32(50),
-        eid_output_name_energy = cms.string('output/regressed_energy'),
-        eid_output_name_id = cms.string('output/id_probabilities'),
-        etaLimitIncreaseWindow = cms.double(2.1),
-        filter_on_categories = cms.vint32(0, 1),
-        filtered_mask = cms.InputTag("filteredLayerClustersEM","EM"),
-        itername = cms.string('EM'),
-        layer_clusters = cms.InputTag("hgcalLayerClusters"),
-        layer_clusters_tiles = cms.InputTag("ticlLayerTileProducer"),
-        max_delta_time = cms.double(3),
-        max_out_in_hops = cms.int32(4),
-        mightGet = cms.optional.untracked.vstring,
-        min_clusters_per_ntuplet = cms.int32(10),
-        min_cos_pointing = cms.double(0.9),
-        min_cos_theta = cms.double(0.978),
-        missing_layers = cms.int32(1),
-        oneTracksterPerTrackSeed = cms.bool(False),
-        original_mask = cms.InputTag("ticlTrackstersTrk"),
-        out_in_dfs = cms.bool(True),
-        pid_threshold = cms.double(0.8),
-        promoteEmptyRegionToTrackster = cms.bool(False),
-        seeding_regions = cms.InputTag("ticlSeedingGlobal"),
-        time_layerclusters = cms.InputTag("hgcalLayerClusters","timeLayerCluster")
-    )
+    # process.ticlTrackstersEM = cms.EDProducer("TrackstersProducer",
+    #     algo_verbosity = cms.int32(0),
+    #     eid_graph_path = cms.string('RecoHGCal/TICL/data/tf_models/energy_id_v0.pb'),
+    #     eid_input_name = cms.string('input'),
+    #     eid_min_cluster_energy = cms.double(1),
+    #     eid_n_clusters = cms.int32(10),
+    #     eid_n_layers = cms.int32(50),
+    #     eid_output_name_energy = cms.string('output/regressed_energy'),
+    #     eid_output_name_id = cms.string('output/id_probabilities'),
+    #     etaLimitIncreaseWindow = cms.double(2.1),
+    #     filter_on_categories = cms.vint32(0, 1),
+    #     filtered_mask = cms.InputTag("filteredLayerClustersEM","EM"),
+    #     itername = cms.string('EM'),
+    #     layer_clusters = cms.InputTag("hgcalLayerClusters"),
+    #     layer_clusters_tiles = cms.InputTag("ticlLayerTileProducer"),
+    #     max_delta_time = cms.double(3),
+    #     max_out_in_hops = cms.int32(4),
+    #     mightGet = cms.optional.untracked.vstring,
+    #     min_clusters_per_ntuplet = cms.int32(10),
+    #     min_cos_pointing = cms.double(0.9),
+    #     min_cos_theta = cms.double(0.978),
+    #     missing_layers = cms.int32(1),
+    #     oneTracksterPerTrackSeed = cms.bool(False),
+    #     original_mask = cms.InputTag("ticlTrackstersTrk"),
+    #     out_in_dfs = cms.bool(True),
+    #     pid_threshold = cms.double(0.8),
+    #     promoteEmptyRegionToTrackster = cms.bool(False),
+    #     seeding_regions = cms.InputTag("ticlSeedingGlobal"),
+    #     time_layerclusters = cms.InputTag("hgcalLayerClusters","timeLayerCluster")
+    # )
 
-    process.ticlMultiClustersFromTrackstersEM = cms.EDProducer("MultiClustersFromTrackstersProducer",
-        LayerClusters = cms.InputTag("hgcalLayerClusters"),
-        Tracksters = cms.InputTag("ticlTrackstersEM"),
-        mightGet = cms.optional.untracked.vstring,
-        verbosity = cms.untracked.uint32(3)
-    )
+    # process.ticlMultiClustersFromTrackstersEM = cms.EDProducer("MultiClustersFromTrackstersProducer",
+    #     LayerClusters = cms.InputTag("hgcalLayerClusters"),
+    #     Tracksters = cms.InputTag("ticlTrackstersEM"),
+    #     mightGet = cms.optional.untracked.vstring,
+    #     verbosity = cms.untracked.uint32(3)
+    # )
 
-    process.particleFlowRecHitHGC = cms.EDProducer("PFRecHitProducer",
-        navigator = cms.PSet(
-            hgcee = cms.PSet(
-                name = cms.string('PFRecHitHGCEENavigator'),
-                topologySource = cms.string('HGCalEESensitive')
-            ),
-            hgcheb = cms.PSet(
-                name = cms.string('PFRecHitHGCHENavigator'),
-                topologySource = cms.string('HGCalHEScintillatorSensitive')
-            ),
-            hgchef = cms.PSet(
-                name = cms.string('PFRecHitHGCHENavigator'),
-                topologySource = cms.string('HGCalHESiliconSensitive')
-            ),
-            name = cms.string('PFRecHitHGCNavigator')
-        ),
-        producers = cms.VPSet(
-            cms.PSet(
-                geometryInstance = cms.string('HGCalEESensitive'),
-                name = cms.string('PFHGCalEERecHitCreator'),
-                qualityTests = cms.VPSet(cms.PSet(
-                    name = cms.string('PFRecHitQTestHGCalThresholdSNR'),
-                    thresholdSNR = cms.double(5.0)
-                )),
-                src = cms.InputTag("HGCalRecHit","HGCEERecHits")
-            ), 
-            cms.PSet(
-                geometryInstance = cms.string('HGCalHESiliconSensitive'),
-                name = cms.string('PFHGCalHSiRecHitCreator'),
-                qualityTests = cms.VPSet(cms.PSet(
-                    name = cms.string('PFRecHitQTestHGCalThresholdSNR'),
-                    thresholdSNR = cms.double(5.0)
-                )),
-                src = cms.InputTag("HGCalRecHit","HGCHEFRecHits")
-            ), 
-            cms.PSet(
-                geometryInstance = cms.string(''),
-                name = cms.string('PFHGCalHScRecHitCreator'),
-                qualityTests = cms.VPSet(cms.PSet(
-                    name = cms.string('PFRecHitQTestHGCalThresholdSNR'),
-                    thresholdSNR = cms.double(5.0)
-                )),
-                src = cms.InputTag("HGCalRecHit","HGCHEBRecHits")
-            )
-        )
-    )
+    # process.particleFlowRecHitHGC = cms.EDProducer("PFRecHitProducer",
+    #     navigator = cms.PSet(
+    #         hgcee = cms.PSet(
+    #             name = cms.string('PFRecHitHGCEENavigator'),
+    #             topologySource = cms.string('HGCalEESensitive')
+    #         ),
+    #         hgcheb = cms.PSet(
+    #             name = cms.string('PFRecHitHGCHENavigator'),
+    #             topologySource = cms.string('HGCalHEScintillatorSensitive')
+    #         ),
+    #         hgchef = cms.PSet(
+    #             name = cms.string('PFRecHitHGCHENavigator'),
+    #             topologySource = cms.string('HGCalHESiliconSensitive')
+    #         ),
+    #         name = cms.string('PFRecHitHGCNavigator')
+    #     ),
+    #     producers = cms.VPSet(
+    #         cms.PSet(
+    #             geometryInstance = cms.string('HGCalEESensitive'),
+    #             name = cms.string('PFHGCalEERecHitCreator'),
+    #             qualityTests = cms.VPSet(cms.PSet(
+    #                 name = cms.string('PFRecHitQTestHGCalThresholdSNR'),
+    #                 thresholdSNR = cms.double(5.0)
+    #             )),
+    #             src = cms.InputTag("HGCalRecHit","HGCEERecHits")
+    #         ), 
+    #         cms.PSet(
+    #             geometryInstance = cms.string('HGCalHESiliconSensitive'),
+    #             name = cms.string('PFHGCalHSiRecHitCreator'),
+    #             qualityTests = cms.VPSet(cms.PSet(
+    #                 name = cms.string('PFRecHitQTestHGCalThresholdSNR'),
+    #                 thresholdSNR = cms.double(5.0)
+    #             )),
+    #             src = cms.InputTag("HGCalRecHit","HGCHEFRecHits")
+    #         ), 
+    #         cms.PSet(
+    #             geometryInstance = cms.string(''),
+    #             name = cms.string('PFHGCalHScRecHitCreator'),
+    #             qualityTests = cms.VPSet(cms.PSet(
+    #                 name = cms.string('PFRecHitQTestHGCalThresholdSNR'),
+    #                 thresholdSNR = cms.double(5.0)
+    #             )),
+    #             src = cms.InputTag("HGCalRecHit","HGCHEBRecHits")
+    #         )
+    #     )
+    # )
 
-    process.particleFlowClusterHGCalFromTICL = cms.EDProducer("PFClusterProducer",
-        energyCorrector = cms.PSet(
+    # process.particleFlowClusterHGCalFromTICL = cms.EDProducer("PFClusterProducer",
+    #     energyCorrector = cms.PSet(
 
-        ),
-        initialClusteringStep = cms.PSet(
-            algoName = cms.string('PFClusterFromHGCalMultiCluster'),
-            clusterSrc = cms.InputTag("ticlMultiClustersFromTrackstersEM"),
-            thresholdsByDetector = cms.VPSet()
-        ),
-        pfClusterBuilder = cms.PSet(
+    #     ),
+    #     initialClusteringStep = cms.PSet(
+    #         algoName = cms.string('PFClusterFromHGCalMultiCluster'),
+    #         clusterSrc = cms.InputTag("ticlMultiClustersFromTrackstersEM"),
+    #         thresholdsByDetector = cms.VPSet()
+    #     ),
+    #     pfClusterBuilder = cms.PSet(
 
-        ),
-        positionReCalc = cms.PSet(
-            algoName = cms.string('Cluster3DPCACalculator'),
-            minFractionInCalc = cms.double(1e-09),
-            updateTiming = cms.bool(False)
-        ),
-        recHitCleaners = cms.VPSet(),
-        recHitsSource = cms.InputTag("particleFlowRecHitHGC"),
-        seedCleaners = cms.VPSet(),
-        seedFinder = cms.PSet(
-            algoName = cms.string('PassThruSeedFinder'),
-            nNeighbours = cms.int32(8),
-            thresholdsByDetector = cms.VPSet()
-        )
-    )
+    #     ),
+    #     positionReCalc = cms.PSet(
+    #         algoName = cms.string('Cluster3DPCACalculator'),
+    #         minFractionInCalc = cms.double(1e-09),
+    #         updateTiming = cms.bool(False)
+    #     ),
+    #     recHitCleaners = cms.VPSet(),
+    #     recHitsSource = cms.InputTag("particleFlowRecHitHGC"),
+    #     seedCleaners = cms.VPSet(),
+    #     seedFinder = cms.PSet(
+    #         algoName = cms.string('PassThruSeedFinder'),
+    #         nNeighbours = cms.int32(8),
+    #         thresholdsByDetector = cms.VPSet()
+    #     )
+    # )
 
     process.HLTHgcalTiclPFClusteringForMuons = cms.Sequence(
         process.hgcalDigis + 
@@ -4416,6 +4416,47 @@ def customizePhase2MuonHLTHgcalIsolation(process, processName = "MYHLT"):
         rhoMax = cms.double(99999999.0),
         rhoProducer = cms.InputTag("hltFixedGridRhoFastjetAllCaloForMuons"),
         rhoScale = cms.double(1.0)
+    )
+
+    return process
+
+def customizePhase2MuonHLTHgcalLCIsolation(process, processName = "MYHLT"):
+
+    process.HLTHgcalTiclLayerClusteringForMuons = cms.Sequence(
+        process.hgcalDigis + 
+        process.HGCalUncalibRecHit + 
+        process.HGCalRecHit + 
+        process.hgcalLayerClusters
+        # process.filteredLayerClustersTrk + 
+        # process.ticlLayerTileProducer + 
+        # process.ticlSeedingTrk + 
+        # process.ticlTrackstersTrk + 
+        # process.filteredLayerClustersEM + 
+        # process.ticlSeedingGlobal + 
+        # process.ticlTrackstersEM + 
+        # process.ticlMultiClustersFromTrackstersEM + 
+        # process.particleFlowRecHitHGC + 
+        # process.particleFlowClusterHGCalFromTICL
+        # offlineBeamSpot + 
+        # particleFlowSuperClusterHGCalFromTICL
+    )
+
+    process.hltPhase2L3MuonsHgcalLCIsoBase = cms.EDProducer("MuonHLTHGCalLayerClusterIsolationProducer",
+        doRhoCorrection = cms.bool(False),
+        drMax = cms.double( 1.0 ),
+        drVetoEM = cms.double(0.0),
+        drVetoHad = cms.double(0.0),
+        effectiveAreas = cms.vdouble(0.0, 0.0),
+        minEnergyEM = cms.double(0.0),
+        minEnergyHad = cms.double(0.0),
+        minEtEM = cms.double(0.0),
+        minEtHad = cms.double(0.0),
+        layerClusterProducer = cms.InputTag("hgcalLayerClusters"),
+        recoCandidateProducer = cms.InputTag("hltPhase2L3MuonCandidates"),  # HERE
+        rhoMax = cms.double(99999999.0),
+        rhoProducer = cms.InputTag("hltFixedGridRhoFastjetAllCaloForMuons"),
+        rhoScale = cms.double(1.0),
+        useEt = cms.bool(False)
     )
 
     return process
@@ -5362,7 +5403,8 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
     process = customizePhase2MuonHLTFixedGridRho(process)
     process = customizePhase2MuonHLTEcalIsolation(process)
     process = customizePhase2MuonHLTHcalIsolation(process)
-    process = customizePhase2MuonHLTHgcalIsolation(process)
+    # process = customizePhase2MuonHLTHgcalLCIsolation(process)
+    process = customizePhase2MuonHLTHgcalPFIsolation(process)
 
     process.hltPhase2L3MuonsEcalIsodR0p3dRVeto0p000 = cms.EDProducer("MuonHLTEcalPFClusterIsolationProducer",
         absEtaLowEdges = cms.vdouble(0.0, 1.479),
@@ -5619,7 +5661,8 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
     process = customizePhase2MuonHLTFixedGridRho(process)
     process = customizePhase2MuonHLTEcalIsolation(process)
     process = customizePhase2MuonHLTHcalIsolation(process)
-    process = customizePhase2MuonHLTHgcalIsolation(process)
+    process = customizePhase2MuonHLTHgcalLCIsolation(process)
+    process = customizePhase2MuonHLTHgcalPFIsolation(process)
     process = customizePhase2MuonHLTTrkIsolationRegional(process)
     process = customizePhase2MuonHLTTrkIsolationRegionalNew(process)
     process = customizePhase2MuonHLTTrkIsolationFull(process)
@@ -5639,6 +5682,8 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
 
         process.HLTHgcalTiclPFClusteringForMuons +
         process.hltPhase2L3MuonsHgcalIsoBase +
+
+        process.hltPhase2L3MuonsHgcalLCIsoBase +
 
         process.HLTTrackReconstructionForIsoPhase2L3MuonIter02 +
         process.hltPhase2L3MuonsTrkIsoBase +
@@ -5703,6 +5748,33 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
             pfIsoTags.append( "pf"+HgcalIsoTag )
             pfIsoLabels.append( HgcalIsoModName )
             pfIsoMods.append( HgcalIsoMod )
+
+
+    lcIsodRs        = [ 0.2, 0.3, 0.4 ]
+    lcIsodRVetoEMs  = [ 0.00, 0.02, 0.04 ]
+    lcIsodRVetoHads = [ 0.00, 0.02, 0.04 ]
+    lcIsoMinEEMs    = [ 0.00, 0.02, 0.05, 0.07 ]
+    lcIsoMinEHads   = [ 0.00, 0.02, 0.05, 0.07 ]
+    for lcIsodR in lcIsodRs:
+        for lcIsodRVetoEM in lcIsodRVetoEMs:
+            for lcIsodRVetoHad in lcIsodRVetoHads:
+                for lcIsoMinEEM in lcIsoMinEEMs:
+                    for lcIsoMinEHad in lcIsoMinEHads:
+                        HgcalLCIsoTag = "HgcalLCIsodR%.1fdRVetoEM%.2fdRVetoHad%.2fminEEM%.2fminEHad%.2f" % (lcIsodR, lcIsodRVetoEM, lcIsodRVetoHad, lcIsoMinEEMs, lcIsoMinEHads)
+                        HgcalLCIsoTag = HgcalLCIsoTag.replace(".", "p")
+                        HgcalLCIsoModName = "hltPhase2L3Muons"+HgcalLCIsoTag
+                        HgcalLCIsoMod = process.hltPhase2L3MuonsHgcalLCIsoBase.clone(
+                            drMax = cms.double(lcIsodR),
+                            drVetoEM = cms.double(lcIsodRVetoEM),
+                            drVetoHad = cms.double(lcIsodRVetoHad),
+                            minEnergyEM = cms.double(lcIsoMinEEM),
+                            minEnergyHad = cms.double(lcIsoMinEHad)
+                        )
+
+                        setattr(process, HgcalLCIsoModName, HgcalLCIsoMod)
+                        pfIsoTags.append( "pf"+HgcalLCIsoTag )
+                        pfIsoLabels.append( HgcalLCIsoModName )
+                        pfIsoMods.append( HgcalLCIsoMod )
 
     pfIsoSeq = reduce(lambda x,y: x+y, pfIsoMods)
 

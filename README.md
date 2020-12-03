@@ -9,6 +9,8 @@ cd CMSSW_11_1_4/src
 cmsenv
 
 git cms-init
+git cms-merge-topic SohamBhattacharya:CMSSW_11_1_4_TICLv3  # TICLv3
+git cms-merge-topic Sam-Harper:HGCalShowerShapes_1113      # 2D layer cluster based HGCal Isolation
 git cms-merge-topic cms-l1t-offline:l1t-phase2-v3.1.9
 git cms-merge-topic trtomei:Phase2-L1T-HLT-Interface
 git cms-merge-topic khaosmos93:dev_1114_L2L3FromL1TkMu
