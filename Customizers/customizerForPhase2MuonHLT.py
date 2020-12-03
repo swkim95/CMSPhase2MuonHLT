@@ -5755,7 +5755,7 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
             for lcIsodRVetoHad in lcIsodRVetoHads:
                 for lcIsoMinEEM in lcIsoMinEEMs:
                     for lcIsoMinEHad in lcIsoMinEHads:
-                        HgcalLCIsoTag = "HgcalLCIsodR%.1fdRVetoEM%.2fdRVetoHad%.2fminEEM%.2fminEHad%.2f" % (lcIsodR, lcIsodRVetoEM, lcIsodRVetoHad, lcIsoMinEEMs, lcIsoMinEHads)
+                        HgcalLCIsoTag = "HgcalLCIsodR%.1fdRVetoEM%.2fdRVetoHad%.2fminEEM%.2fminEHad%.2f" % (lcIsodR, lcIsodRVetoEM, lcIsodRVetoHad, lcIsoMinEEM, lcIsoMinEHad)
                         HgcalLCIsoTag = HgcalLCIsoTag.replace(".", "p")
                         HgcalLCIsoModName = "hltPhase2L3Muons"+HgcalLCIsoTag
                         HgcalLCIsoMod = process.hltPhase2L3MuonsHgcalLCIsoBase.clone(
