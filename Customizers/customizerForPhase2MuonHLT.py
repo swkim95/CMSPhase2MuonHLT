@@ -5732,19 +5732,20 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
             pfIsoLabels.append( HcalIsoModName )
             pfIsoMods.append( HcalIsoMod )
 
-            HgcalIsoTag = "HgcalIsodR%.1fdRVeto%.3f" % (pfIsodR, pfIsodRVeto)
-            HgcalIsoTag = HgcalIsoTag.replace(".", "p")
-            HgcalIsoModName = "hltPhase2L3Muons"+HgcalIsoTag
-            HgcalIsoMod = process.hltPhase2L3MuonsHgcalIsoBase.clone(
-                drMax = cms.double( pfIsodR ),
-                drVetoBarrel = cms.double( pfIsodRVeto ),
-                drVetoEndcap = cms.double( pfIsodRVeto )
-            )
+            # HERE tmp
+            # HgcalIsoTag = "HgcalIsodR%.1fdRVeto%.3f" % (pfIsodR, pfIsodRVeto)
+            # HgcalIsoTag = HgcalIsoTag.replace(".", "p")
+            # HgcalIsoModName = "hltPhase2L3Muons"+HgcalIsoTag
+            # HgcalIsoMod = process.hltPhase2L3MuonsHgcalIsoBase.clone(
+            #     drMax = cms.double( pfIsodR ),
+            #     drVetoBarrel = cms.double( pfIsodRVeto ),
+            #     drVetoEndcap = cms.double( pfIsodRVeto )
+            # )
 
-            setattr(process, HgcalIsoModName, HgcalIsoMod)
-            pfIsoTags.append( "pf"+HgcalIsoTag )
-            pfIsoLabels.append( HgcalIsoModName )
-            pfIsoMods.append( HgcalIsoMod )
+            # setattr(process, HgcalIsoModName, HgcalIsoMod)
+            # pfIsoTags.append( "pf"+HgcalIsoTag )
+            # pfIsoLabels.append( HgcalIsoModName )
+            # pfIsoMods.append( HgcalIsoMod )
 
 
     lcIsodRs        = [ 0.2, 0.3, 0.4 ]
