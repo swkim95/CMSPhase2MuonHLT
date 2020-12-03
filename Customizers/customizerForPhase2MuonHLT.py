@@ -4354,32 +4354,32 @@ def customizePhase2MuonHLTHgcalPFIsolation(process, processName = "MYHLT"):
     #     )
     # )
 
-    # process.particleFlowClusterHGCalFromTICL = cms.EDProducer("PFClusterProducer",
-    #     energyCorrector = cms.PSet(
+    process.particleFlowClusterHGCalFromTICL = cms.EDProducer("PFClusterProducer",
+        energyCorrector = cms.PSet(
 
-    #     ),
-    #     initialClusteringStep = cms.PSet(
-    #         algoName = cms.string('PFClusterFromHGCalMultiCluster'),
-    #         clusterSrc = cms.InputTag("ticlMultiClustersFromTrackstersEM"),
-    #         thresholdsByDetector = cms.VPSet()
-    #     ),
-    #     pfClusterBuilder = cms.PSet(
+        ),
+        initialClusteringStep = cms.PSet(
+            algoName = cms.string('PFClusterFromHGCalMultiCluster'),
+            clusterSrc = cms.InputTag("ticlMultiClustersFromTrackstersEM"),
+            thresholdsByDetector = cms.VPSet()
+        ),
+        pfClusterBuilder = cms.PSet(
 
-    #     ),
-    #     positionReCalc = cms.PSet(
-    #         algoName = cms.string('Cluster3DPCACalculator'),
-    #         minFractionInCalc = cms.double(1e-09),
-    #         updateTiming = cms.bool(False)
-    #     ),
-    #     recHitCleaners = cms.VPSet(),
-    #     recHitsSource = cms.InputTag("particleFlowRecHitHGC"),
-    #     seedCleaners = cms.VPSet(),
-    #     seedFinder = cms.PSet(
-    #         algoName = cms.string('PassThruSeedFinder'),
-    #         nNeighbours = cms.int32(8),
-    #         thresholdsByDetector = cms.VPSet()
-    #     )
-    # )
+        ),
+        positionReCalc = cms.PSet(
+            algoName = cms.string('Cluster3DPCACalculator'),
+            minFractionInCalc = cms.double(1e-09),
+            updateTiming = cms.bool(False)
+        ),
+        recHitCleaners = cms.VPSet(),
+        recHitsSource = cms.InputTag("particleFlowRecHitHGC"),
+        seedCleaners = cms.VPSet(),
+        seedFinder = cms.PSet(
+            algoName = cms.string('PassThruSeedFinder'),
+            nNeighbours = cms.int32(8),
+            thresholdsByDetector = cms.VPSet()
+        )
+    )
 
     process.HLTHgcalTiclPFClusteringForMuons = cms.Sequence(
         process.hgcalDigis + 
