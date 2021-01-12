@@ -4,17 +4,15 @@
 
 ### Setup
 ```shell
-cmsrel CMSSW_11_1_4
-cd CMSSW_11_1_4/src
+cmsrel CMSSW_11_1_6
+cd CMSSW_11_1_6/src
 cmsenv
 
 git cms-init
-git cms-merge-topic SohamBhattacharya:CMSSW_11_1_4_TICLv3  # TICLv3
-git cms-merge-topic Sam-Harper:HGCalShowerShapes_1113      # 2D layer cluster based HGCal Isolation
-git cms-merge-topic cms-l1t-offline:l1t-phase2-v3.1.9
-git cms-merge-topic trtomei:Phase2-L1T-HLT-Interface
-git cms-merge-topic khaosmos93:dev_1114_L2L3FromL1TkMu
-git cms-merge-topic khaosmos93:dev_1114_HgcalLayerClusterIso_tmp
+git cms-merge-topic -u cms-l1t-offline:l1t-phase2-v3.3.5.2-CMSSW_11_1_6
+git cms-merge-topic 32517  # for HGcal isolation
+git cms-merge-topic khaosmos93:Phase2-L1T-HLT-Interface_dev1116
+git cms-merge-topic khaosmos93:dev_1116_L2L3FromL1TkMu
 
 git clone https://github.com/khaosmos93/CMSPhase2MuonHLT.git HLTrigger/PhaseII/python/Muon
 
@@ -34,6 +32,32 @@ cmsRun HLT_Phase2_L3MuonFromL1TkMuon.py
  - hltPhase2L3MuonCandidates (reco::RecoChargedCandidate)
 
 
+
+
+## (Outdated) Running L3 Muon reco (OI + IO) in CMSSW_11_1_4
+<details><summary> show </summary>
+<p>
+
+```shell
+cmsrel CMSSW_11_1_4
+cd CMSSW_11_1_4/src
+cmsenv
+
+git cms-init
+git cms-merge-topic SohamBhattacharya:CMSSW_11_1_4_TICLv3  # TICLv3
+git cms-merge-topic Sam-Harper:HGCalShowerShapes_1113      # 2D layer cluster based HGCal Isolation
+git cms-merge-topic cms-l1t-offline:l1t-phase2-v3.1.9
+git cms-merge-topic trtomei:Phase2-L1T-HLT-Interface
+git cms-merge-topic khaosmos93:dev_1114_L2L3FromL1TkMu
+git cms-merge-topic khaosmos93:dev_1114_HgcalLayerClusterIso_tmp
+
+git clone https://github.com/khaosmos93/CMSPhase2MuonHLT.git HLTrigger/PhaseII/python/Muon
+
+scram b -j 10
+```
+
+</p>
+</details>
 
 
 ## (Outdated) Running L3 Trk Muon reco in CMSSW_11_1_4

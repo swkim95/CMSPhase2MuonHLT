@@ -221,13 +221,13 @@ process.schedule = cms.Schedule(
 process.load( "DQMServices.Core.DQMStore_cfi" )
 process.DQMStore.enableMultiThread = True
 
-process.GlobalTag.globaltag = "111X_mcRun4_realistic_T15_v2"
+process.GlobalTag.globaltag = "111X_mcRun4_realistic_T15_v3"
 
 process.source.fileNames = cms.untracked.vstring(
 
-    "root://xrootd-cms.infn.it//store/mc/Phase2HLTTDRSummer20ReRECOMiniAOD/TTTo2L2Nu_TuneCP5_14TeV-powheg-pythia8/FEVT/NoPU_111X_mcRun4_realistic_T15_v1-v1/130000/2DDCF15E-DE13-5949-98D7-4F4C2B10759C.root",
+    # "root://xrootd-cms.infn.it//store/mc/Phase2HLTTDRSummer20ReRECOMiniAOD/TTTo2L2Nu_TuneCP5_14TeV-powheg-pythia8/FEVT/NoPU_111X_mcRun4_realistic_T15_v1-v1/130000/2DDCF15E-DE13-5949-98D7-4F4C2B10759C.root",
 
-    # "root://xrootd-cms.infn.it//store/mc/Phase2HLTTDRSummer20ReRECOMiniAOD/ZH_HToBB_ZInclusive_M125_TuneCUETP8M1_14TeV_powheg_pythia8/FEVT/NoPU_111X_mcRun4_realistic_T15_v1-v1/130000/6B06B794-81DB-3A43-80B0-041BF0E9BF5A.root",
+    "root://xrootd-cms.infn.it//store/mc/Phase2HLTTDRSummer20ReRECOMiniAOD/ZH_HToBB_ZInclusive_M125_TuneCUETP8M1_14TeV_powheg_pythia8/FEVT/NoPU_111X_mcRun4_realistic_T15_v1-v1/130000/6B06B794-81DB-3A43-80B0-041BF0E9BF5A.root",
 
     # "root://xrootd-cms.infn.it//store/mc/Phase2HLTTDRSummer20ReRECOMiniAOD/BplusToJpsiK_NoFilter_TuneCP5_14TeV-pythia8-evtgen/GEN-SIM-DIGI-RAW-MINIAOD/NoPU_111X_mcRun4_realistic_T15_v1-v1/260000/90DB40B9-4783-3D40-9685-2513D99BC725.root",
 
