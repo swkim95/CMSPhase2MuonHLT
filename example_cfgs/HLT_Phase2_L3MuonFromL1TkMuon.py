@@ -129,7 +129,7 @@ process.schedule = cms.Schedule(
 process.load( "DQMServices.Core.DQMStore_cfi" )
 process.DQMStore.enableMultiThread = True
 
-process.GlobalTag.globaltag = "111X_mcRun4_realistic_T15_v2"
+process.GlobalTag.globaltag = "111X_mcRun4_realistic_T15_v3"
 
 process.source.fileNames = cms.untracked.vstring(
     # "/store/mc/Phase2HLTTDRSummer20ReRECOMiniAOD/DYJetsToLL_M-10to50_TuneCP5_14TeV-madgraphMLM-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_111X_mcRun4_realistic_T15_v1-v1/120000/5821E269-9E33-AE49-9133-67A03F2527EC.root",
