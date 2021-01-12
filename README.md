@@ -1,6 +1,6 @@
 # CMS Phase-2 Muon HLT
 
-## Running L3 Muon reco (OI + IO) in CMSSW_11_1_4
+## Running L3 Muon reco (OI + IO) in CMSSW_11_1_6
 
 ### Setup
 ```shell
