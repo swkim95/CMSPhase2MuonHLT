@@ -1125,11 +1125,9 @@ def customizeL2MuonReco(process, processName = "MYHLT"):
 
     process.hltL2MuonSeedsFromL1TkMuon = cms.EDProducer("L2MuonSeedGeneratorFromL1TkMu",
         EtaMatchingBins = cms.vdouble(0.0, 2.5),
-        GMTReadoutCollection = cms.InputTag(""),
         InputObjects = cms.InputTag("L1TkMuons", "", processName),
         L1MaxEta = cms.double(2.5),
         L1MinPt = cms.double(0.0),
-        L1MinQuality = cms.uint32(0),
         MatchDR = cms.vdouble(0.3),
         OfflineSeedLabel = cms.untracked.InputTag("hltL2OfflineMuonSeeds"),
         Propagator = cms.string('SteppingHelixPropagatorAny'),

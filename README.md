@@ -11,7 +11,7 @@ cmsenv
 git cms-init
 git cms-merge-topic -u cms-l1t-offline:l1t-phase2-v3.3.5.2-CMSSW_11_1_6
 git cms-merge-topic 32517  # for HGcal isolation
-git cms-merge-topic khaosmos93:Phase2-L1T-HLT-Interface_dev1116
+git cms-merge-topic 32474  # Phase2-L1T-HLT
 git cms-merge-topic khaosmos93:dev_1116_L2L3FromL1TkMu
 
 git clone https://github.com/khaosmos93/CMSPhase2MuonHLT.git HLTrigger/PhaseII/python/Muon
@@ -22,9 +22,10 @@ scram b -j 10
 ### Testing
 ```shell
 cd your-working-directory
-cp /afs/cern.ch/user/t/tomei/public/L1TObjScaling.db your-working-directory
-cp $CMSSW_BASE/src/HLTrigger/PhaseII/python/Muon/example_cfgs/HLT_Phase2_L3MuonFromL1TkMuon.py your-working-directory
-cmsRun HLT_Phase2_L3MuonFromL1TkMuon.py
+cp $CMSSW_BASE/src/HLTrigger/PhaseII/python/Muon/example_cfgs/HLT_Phase2_example_menu.py your-working-directory
+cmsRun HLT_Phase2_example_menu.py
+
+# N.B. other cfg files in example_cfgs are obsolete
 ```
 
 ### Output L3 muon collections

@@ -69,29 +69,20 @@ for moduleType in [process.producers_(), process.filters_(), process.analyzers_(
             module.mightGet = cms.optional.untracked.vstring
 # -- #
 
-# -- L1T-HLT interface input db -- #
-process.load("CondCore.CondDB.CondDB_cfi")
-process.CondDB.connect = "sqlite_file:L1TObjScaling.db"
-
-process.L1TScalingESSource = cms.ESSource(
-    "PoolDBESSource",
-    process.CondDB,
-    DumpStat=cms.untracked.bool(True),
-    toGet=cms.VPSet(
-        cms.PSet(
-            record=cms.string("L1TObjScalingRcd"),
-            tag=cms.string("L1TkMuonScaling"),
-            label=cms.untracked.string("L1TkMuonScaling"),
-        ),
-    ),
-)
-process.es_prefer_l1tscaling = cms.ESPrefer("PoolDBESSource", "L1TScalingESSource")
-
 # -- Single muon
-process.hltL1TkSingleMuFiltered22 = cms.EDFilter("L1TkMuonFilter",
+process.hltL1TkSingleMuFiltered22 = cms.EDFilter("L1TTkMuonFilter",
     saveTags = cms.bool( True ),
     MinPt = cms.double( 22.0 ),
-    inputTag = cms.InputTag("L1TkMuons", "", "MYHLT")
+    MinN=cms.int32(1),
+    MinEta=cms.double(-2.4),
+    MaxEta=cms.double(2.4),
+    inputTag = cms.InputTag("L1TkMuons", "", "MYHLT"),
+    # ScalingsV11p1.txt
+    Scalings=cms.PSet(
+        barrel=cms.vdouble(0.820128, 1.04124, 0.0),
+        overlap=cms.vdouble(0.920897, 1.03712, 0.0),
+        endcap=cms.vdouble(0.864715, 1.03215, 0.0),
+    )
 )
 process.hltL3fL1TkSingleMu22L3Filtered50Q = cms.EDFilter( "HLTMuonTrkL1TkMuFilter",
     saveTags = cms.bool( True ),
@@ -108,35 +99,48 @@ process.hltL3fL1TkSingleMu22L3Filtered50Q = cms.EDFilter( "HLTMuonTrkL1TkMuFilte
 )
 
 # -- Double muon
-process.hltL1TkDoubleMuFiltered7 = cms.EDFilter("L1TkMuonFilter",
+process.hltL1TkDoubleMuFiltered7 = cms.EDFilter("L1TTkMuonFilter",
+    saveTags = cms.bool( True ),
     MinPt=cms.double(7.0),
     MinN=cms.int32(2),
     MinEta=cms.double(-2.4),
     MaxEta=cms.double(2.4),
-    inputTag = cms.InputTag("L1TkMuons", "", "MYHLT")
+    inputTag = cms.InputTag("L1TkMuons", "", "MYHLT"),
+    # ScalingsV11p1.txt
+    Scalings=cms.PSet(
+        barrel=cms.vdouble(0.820128, 1.04124, 0.0),
+        overlap=cms.vdouble(0.920897, 1.03712, 0.0),
+        endcap=cms.vdouble(0.864715, 1.03215, 0.0),
+    )
 )
-process.hltL1TkSingleMuFiltered15 = cms.EDFilter("L1TkMuonFilter",
+process.hltL1TkSingleMuFiltered15 = cms.EDFilter("L1TTkMuonFilter",
+    saveTags = cms.bool( True ),
     MinPt=cms.double(15.0),
     MinN=cms.int32(1),
     MinEta=cms.double(-2.4),
     MaxEta=cms.double(2.4),
-    inputTag = cms.InputTag("L1TkMuons", "", "MYHLT")
+    inputTag = cms.InputTag("L1TkMuons", "", "MYHLT"),
+    # ScalingsV11p1.txt
+    Scalings=cms.PSet(
+        barrel=cms.vdouble(0.820128, 1.04124, 0.0),
+        overlap=cms.vdouble(0.920897, 1.03712, 0.0),
+        endcap=cms.vdouble(0.864715, 1.03215, 0.0),
+    )
 )
-# Not working yet
-# process.hltDoubleMuon7DZ1p0 = cms.EDFilter("HLT2L1TkMuonL1TkMuonDZ",
-#     saveTags = cms.bool( True ),
-#     originTag1 = cms.VInputTag( 'L1TkMuons::MYHLT' ),
-#     originTag2 = cms.VInputTag( 'L1TkMuons::MYHLT' ),
-#     MinPixHitsForDZ = cms.int32( -1 ),
-#     MinN = cms.int32( 1 ),
-#     triggerType1 = cms.int32( -114 ),
-#     triggerType2 = cms.int32( -114 ),
-#     MinDR = cms.double( 0.001 ),
-#     MaxDZ = cms.double( 1.0 ),
-#     inputTag1 = cms.InputTag( "hltL1TkDoubleMuFiltered7" ),
-#     checkSC = cms.bool( False ),
-#     inputTag2 = cms.InputTag( "hltL1TkDoubleMuFiltered7" )
-# )
+process.hltDoubleMuon7DZ1p0 = cms.EDFilter("HLT2L1TkMuonL1TkMuonDZ",
+    saveTags = cms.bool( True ),
+    originTag1 = cms.VInputTag( 'L1TkMuons::MYHLT' ),
+    originTag2 = cms.VInputTag( 'L1TkMuons::MYHLT' ),
+    MinPixHitsForDZ = cms.int32( 0 ),
+    MinN = cms.int32( 1 ),
+    triggerType1 = cms.int32( -114 ),
+    triggerType2 = cms.int32( -114 ),
+    MinDR = cms.double( -1 ),
+    MaxDZ = cms.double( 1.0 ),
+    inputTag1 = cms.InputTag( "hltL1TkDoubleMuFiltered7" ),
+    checkSC = cms.bool( False ),
+    inputTag2 = cms.InputTag( "hltL1TkDoubleMuFiltered7" )
+)
 process.hltL3fL1DoubleMu155fPreFiltered8 = cms.EDFilter( "HLTMuonTrkL1TkMuFilter",
     saveTags = cms.bool( True ),
     maxNormalizedChi2 = cms.double( 1.0E99 ),
@@ -222,35 +226,48 @@ process.hltDiMuon178RelTrkIsoFiltered0p4DzFiltered0p2 = cms.EDFilter( "HLT2MuonM
 # )
 
 # -- Triple muon
-process.hltL1TripleMuFiltered3 = cms.EDFilter("L1TkMuonFilter",
+process.hltL1TripleMuFiltered3 = cms.EDFilter("L1TTkMuonFilter",
+    saveTags = cms.bool( True ),
     MinPt=cms.double(3.0),
     MinN=cms.int32(3),
     MinEta=cms.double(-2.4),
     MaxEta=cms.double(2.4),
-    inputTag = cms.InputTag("L1TkMuons", "", "MYHLT")
+    inputTag = cms.InputTag("L1TkMuons", "", "MYHLT"),
+    # ScalingsV11p1.txt
+    Scalings=cms.PSet(
+        barrel=cms.vdouble(0.820128, 1.04124, 0.0),
+        overlap=cms.vdouble(0.920897, 1.03712, 0.0),
+        endcap=cms.vdouble(0.864715, 1.03215, 0.0),
+    )
 )
-process.hltL1SingleMuFiltered5 = cms.EDFilter("L1TkMuonFilter",
+process.hltL1SingleMuFiltered5 = cms.EDFilter("L1TTkMuonFilter",
+    saveTags = cms.bool( True ),
     MinPt=cms.double(5.0),
     MinN=cms.int32(1),
     MinEta=cms.double(-2.4),
     MaxEta=cms.double(2.4),
-    inputTag = cms.InputTag("L1TkMuons", "", "MYHLT")
+    inputTag = cms.InputTag("L1TkMuons", "", "MYHLT"),
+    # ScalingsV11p1.txt
+    Scalings=cms.PSet(
+        barrel=cms.vdouble(0.820128, 1.04124, 0.0),
+        overlap=cms.vdouble(0.920897, 1.03712, 0.0),
+        endcap=cms.vdouble(0.864715, 1.03215, 0.0),
+    )
 )
-# Not working yet
-# process.hltTripleMuon3DZ1p0 = cms.EDFilter("HLT2L1TkMuonL1TkMuonDZ",
-#     saveTags = cms.bool( True ),
-#     originTag1 = cms.VInputTag( 'L1TkMuons::MYHLT' ),
-#     originTag2 = cms.VInputTag( 'L1TkMuons::MYHLT' ),
-#     MinPixHitsForDZ = cms.int32( -1 ),
-#     MinN = cms.int32( 3 ),
-#     triggerType1 = cms.int32( -114 ),
-#     triggerType2 = cms.int32( -114 ),
-#     MinDR = cms.double( 0.001 ),
-#     MaxDZ = cms.double( 1.0 ),
-#     inputTag1 = cms.InputTag( "hltL1TripleMuFiltered3" ),
-#     checkSC = cms.bool( False ),
-#     inputTag2 = cms.InputTag( "hltL1TripleMuFiltered3" )
-# )
+process.hltTripleMuon3DZ1p0 = cms.EDFilter("HLT2L1TkMuonL1TkMuonDZ",
+    saveTags = cms.bool( True ),
+    originTag1 = cms.VInputTag( 'L1TkMuons::MYHLT' ),
+    originTag2 = cms.VInputTag( 'L1TkMuons::MYHLT' ),
+    MinPixHitsForDZ = cms.int32( 0 ),
+    MinN = cms.int32( 3 ),
+    triggerType1 = cms.int32( -114 ),
+    triggerType2 = cms.int32( -114 ),
+    MinDR = cms.double( -1 ),
+    MaxDZ = cms.double( 1.0 ),
+    inputTag1 = cms.InputTag( "hltL1TripleMuFiltered3" ),
+    checkSC = cms.bool( False ),
+    inputTag2 = cms.InputTag( "hltL1TripleMuFiltered3" )
+)
 process.hltL3fL1TkTripleMu533PreFiltered555 = cms.EDFilter( "HLTMuonTrkL1TkMuFilter",
     saveTags = cms.bool( True ),
     maxNormalizedChi2 = cms.double( 1.0E99 ),
@@ -298,7 +315,7 @@ process.L1_DoubleMuon_17_8 = cms.Path(
     process.HLTBeginSequence+
     process.hltL1TkDoubleMuFiltered7+
     process.hltL1TkSingleMuFiltered15+
-    # process.hltDoubleMuon7DZ1p0+
+    process.hltDoubleMuon7DZ1p0+
     process.HLTEndSequence
 )
 
@@ -306,7 +323,7 @@ process.L1_TripleMuon_5_3_3 = cms.Path(
     process.HLTBeginSequence+
     process.hltL1TripleMuFiltered3+
     process.hltL1SingleMuFiltered5+
-    # process.hltTripleMuon3DZ1p0+
+    process.hltTripleMuon3DZ1p0+
     process.HLTEndSequence
 )
 
@@ -379,7 +396,7 @@ process.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_FromL1TkMuon = cms.Path(
     # L1TkMuon filter
     process.hltL1TkDoubleMuFiltered7+
     process.hltL1TkSingleMuFiltered15+
-    # process.hltDoubleMuon7DZ1p0+
+    process.hltDoubleMuon7DZ1p0+
 
     # local reco
     process.HLTMuonLocalRecoSequence+
@@ -411,7 +428,7 @@ process.HLT_TriMu_10_5_5_DZ_FromL1TkMuon = cms.Path(
     # L1TkMuon filters
     process.hltL1TripleMuFiltered3+
     process.hltL1SingleMuFiltered5+
-    # process.hltTripleMuon3DZ1p0+
+    process.hltTripleMuon3DZ1p0+
 
     # local reco
     process.HLTMuonLocalRecoSequence+
