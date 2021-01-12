@@ -809,7 +809,10 @@ def loadPhase2MuonHLTESProducers(process, processName = "MYHLT"):
     return process
 
 def customizeMuonLocalReco(process, processName = "MYHLT"):
-    from Configuration.StandardSequences.Reconstruction_cff import *
+    # -- using offline muon local reconstruction
+    from Configuration.StandardSequences.Reconstruction_cff import \
+    dt1DRecHits, dt4DSegments, csc2DRecHits, cscSegments, \
+    rpcRecHits, gemRecHits, gemSegments, me0RecHits, me0Segments
 
     process.hltDt1DRecHits = dt1DRecHits.clone(
         dtDigiLabel = cms.InputTag("simMuonDTDigis")
@@ -1120,7 +1123,7 @@ def customizeL2MuonReco(process, processName = "MYHLT"):
         scaleDT = cms.bool(True)
     )
 
-    process.hltL2MuonSeeds = cms.EDProducer("L2MuonSeedGeneratorFromL1TkMu",
+    process.hltL2MuonSeedsFromL1TkMuon = cms.EDProducer("L2MuonSeedGeneratorFromL1TkMu",
         EtaMatchingBins = cms.vdouble(0.0, 2.5),
         GMTReadoutCollection = cms.InputTag(""),
         InputObjects = cms.InputTag("L1TkMuons", "", processName),
@@ -1141,9 +1144,9 @@ def customizeL2MuonReco(process, processName = "MYHLT"):
         UseUnassociatedL1 = cms.bool(False)
     )
 
-    process.hltL2Muons = cms.EDProducer("L2MuonProducer",
+    process.hltL2MuonsFromL1TkMuon = cms.EDProducer("L2MuonProducer",
         DoSeedRefit = cms.bool(False),
-        InputObjects = cms.InputTag("hltL2MuonSeeds"),
+        InputObjects = cms.InputTag("hltL2MuonSeedsFromL1TkMuon"),
         L2TrajBuilderParameters = cms.PSet(
             BWFilterParameters = cms.PSet(
                 BWSeedType = cms.string('fromGenerator'),
@@ -1237,20 +1240,20 @@ def customizeL2MuonReco(process, processName = "MYHLT"):
         )
     )
 
-    process.HLTL2muonrecoNocandSequence = cms.Sequence(
+    process.HLTL2muonrecoFromL1TkMuonNocandSequence = cms.Sequence(
         process.HLTMuonLocalRecoSequence+
         process.hltL2OfflineMuonSeeds+
-        process.hltL2MuonSeeds+
-        process.hltL2Muons
+        process.hltL2MuonSeedsFromL1TkMuon+
+        process.hltL2MuonsFromL1TkMuon
     )
 
-    process.hltL2MuonCandidates = cms.EDProducer("L2MuonCandidateProducer",
-        InputObjects = cms.InputTag("hltL2Muons","UpdatedAtVtx")
+    process.hltL2MuonFromL1TkMuonCandidates = cms.EDProducer("L2MuonCandidateProducer",
+        InputObjects = cms.InputTag("hltL2MuonsFromL1TkMuon","UpdatedAtVtx")
     )
 
     process.HLTL2muonrecoSequence = cms.Sequence(
-        process.HLTL2muonrecoNocandSequence+
-        process.hltL2MuonCandidates
+        process.HLTL2muonrecoFromL1TkMuonNocandSequence+
+        process.hltL2MuonFromL1TkMuonCandidates
     )
 
     return process
@@ -1292,7 +1295,7 @@ def customizeOI(process, processName = "MYHLT"):
         pT2 = cms.double(30.0),
         pT3 = cms.double(70.0),
         propagatorName = cms.string('PropagatorWithMaterialParabolicMf'),
-        src = cms.InputTag("hltL2Muons","UpdatedAtVtx"),
+        src = cms.InputTag("hltL2MuonsFromL1TkMuon","UpdatedAtVtx"),
         tsosDiff1 = cms.double(0.2),
         tsosDiff2 = cms.double(0.02)
     )
@@ -1450,7 +1453,7 @@ def customizeOI(process, processName = "MYHLT"):
                 UseVertex = cms.bool(False),
                 Z_fixed = cms.bool(False),
                 beamSpot = cms.InputTag("offlineBeamSpot"),
-                input = cms.InputTag("hltL2Muons","UpdatedAtVtx"),
+                input = cms.InputTag("hltL2MuonsFromL1TkMuon","UpdatedAtVtx"),
                 maxRegions = cms.int32(2),
                 precise = cms.bool(True),
                 vertexCollection = cms.InputTag("pixelVertices")
@@ -1479,7 +1482,7 @@ def customizeOI(process, processName = "MYHLT"):
             tkTrajUseVertex = cms.bool(False),
             tkTrajVertex = cms.InputTag("Notused")
         ),
-        MuonCollectionLabel = cms.InputTag("hltL2Muons","UpdatedAtVtx"),
+        MuonCollectionLabel = cms.InputTag("hltL2MuonsFromL1TkMuon","UpdatedAtVtx"),
         ServiceParameters = cms.PSet(
             Propagators = cms.untracked.vstring(
                 'hltESPSmartPropagatorAny', 
@@ -2136,7 +2139,7 @@ def customizeL3Muon(process, processName = "MYHLT"):
                 UseVertex = cms.bool(False),
                 Z_fixed = cms.bool(False),
                 beamSpot = cms.InputTag("offlineBeamSpot"),
-                input = cms.InputTag("hltL2Muons","UpdatedAtVtx"),
+                input = cms.InputTag("hltL2MuonsFromL1TkMuon","UpdatedAtVtx"),
                 maxRegions = cms.int32(2),
                 precise = cms.bool(True),
                 vertexCollection = cms.InputTag("pixelVertices")
@@ -2165,7 +2168,7 @@ def customizeL3Muon(process, processName = "MYHLT"):
             tkTrajUseVertex = cms.bool(False),
             tkTrajVertex = cms.InputTag("Notused")
         ),
-        MuonCollectionLabel = cms.InputTag("hltL2Muons","UpdatedAtVtx"),
+        MuonCollectionLabel = cms.InputTag("hltL2MuonsFromL1TkMuon","UpdatedAtVtx"),
         ServiceParameters = cms.PSet(
             Propagators = cms.untracked.vstring(
                 'hltESPSmartPropagatorAny', 
@@ -2443,7 +2446,7 @@ def customizeL3Muon(process, processName = "MYHLT"):
         # inputCollectionTypes = cms.vstring(
         #     'inner tracks'
         # ),
-        inputCollectionLabels = cms.VInputTag("hltPhase2L3MuonMerged", "hltPhase2L3GlbMuon", "hltL2Muons:UpdatedAtVtx"),
+        inputCollectionLabels = cms.VInputTag("hltPhase2L3MuonMerged", "hltPhase2L3GlbMuon", "hltL2MuonsFromL1TkMuon:UpdatedAtVtx"),
         inputCollectionTypes = cms.vstring(
             'inner tracks', 
             'links', 
@@ -2622,10 +2625,6 @@ def customizePhase2MuonHLTReconstruction(process, processName = "MYHLT"):
         previousCandTag = cms.InputTag( "hltL1TkSingleMuFiltered22" ),
         inputMuonCollection = cms.InputTag( "hltPhase2L3Muons" ),
         inputCandCollection = cms.InputTag( "hltPhase2L3MuonCandidates" )
-
-        # trkMuonId = cms.uint32( 0 ),
-        # requiredTypeMask = cms.uint32( 0 ),
-        # allowedTypeMask = cms.uint32( 255 )
     )
 
     return process
@@ -5618,6 +5617,10 @@ def customizePhase2MuonHLTIsolation(process, processName = "MYHLT"):
 
     process.hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p07 = process.hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0.clone()
     process.hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p07.CutsPSet.Thresholds = cms.vdouble( 0.07 )
+
+    process.hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p4 = process.hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0.clone()
+    process.hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p4.CutsPSet.Thresholds = cms.vdouble( 0.4 )
+
 
     process.hltL3crIsoL1TkSingleMu22L3f24QL3trkIsoRegionalNewFiltered0p07EcalHcalHgcalTrk = cms.EDFilter( "HLTMuonIsoFilter",
         saveTags = cms.bool( True ),
