@@ -13,6 +13,7 @@ git cms-merge-topic -u cms-l1t-offline:l1t-phase2-v3.3.5.2-CMSSW_11_1_6
 git cms-merge-topic 32517  # for HGcal isolation
 git cms-merge-topic 32474  # Phase2-L1T-HLT
 git cms-merge-topic khaosmos93:dev_1116_L2L3FromL1TkMu
+git cms-merge-topic khaosmos93:dev_1116_L1TkMuFilters
 
 git clone https://github.com/khaosmos93/CMSPhase2MuonHLT.git HLTrigger/PhaseII/python/Muon
 
