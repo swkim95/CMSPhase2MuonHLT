@@ -209,6 +209,15 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         checkSC = cms.bool( False ),
         inputTag2 = cms.InputTag( "hltL1TkDoubleMuFiltered7" )
     )
+    process.hltDoubleMuon7DR0 = cms.EDFilter("HLT2L1TkMuonL1TkMuonMuRefDR",
+        saveTags = cms.bool( True ),
+        originTag1 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
+        originTag2 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
+        MinN = cms.int32( 1 ),
+        MinDR = cms.double( 0 ),
+        inputTag1 = cms.InputTag( "hltL1TkDoubleMuFiltered7" ),
+        inputTag2 = cms.InputTag( "hltL1TkDoubleMuFiltered7" )
+    )
     process.hltL3fL1DoubleMu155fPreFiltered8 = cms.EDFilter( "HLTMuonTrkL1TkMuFilter",
         saveTags = cms.bool( True ),
         maxNormalizedChi2 = cms.double( 1.0E99 ),
@@ -364,6 +373,15 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         checkSC = cms.bool( False ),
         inputTag2 = cms.InputTag( "hltL1TripleMuFiltered3" )
     )
+    process.hltTripleMuon3DR0 = cms.EDFilter("HLT2L1TkMuonL1TkMuonMuRefDR",
+        saveTags = cms.bool( True ),
+        originTag1 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
+        originTag2 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
+        MinN = cms.int32( 3 ),
+        MinDR = cms.double( 0 ),
+        inputTag1 = cms.InputTag( "hltL1TripleMuFiltered3" ),
+        inputTag2 = cms.InputTag( "hltL1TripleMuFiltered3" )
+    )
     process.hltL3fL1TkTripleMu533PreFiltered555 = cms.EDFilter( "HLTMuonTrkL1TkMuFilter",
         saveTags = cms.bool( True ),
         maxNormalizedChi2 = cms.double( 1.0E99 ),
@@ -425,6 +443,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         process.hltL1TripleMuFiltered3+
         process.hltL1SingleMuFiltered5+
         process.hltTripleMuon3DZ1p0+
+        process.hltTripleMuon3DR0+
         process.HLTEndSequence
     )
 
@@ -571,6 +590,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         process.hltL1TripleMuFiltered3+
         process.hltL1SingleMuFiltered5+
         process.hltTripleMuon3DZ1p0+
+        process.hltTripleMuon3DR0+
 
         # local reco
         process.HLTMuonLocalRecoSequence+
