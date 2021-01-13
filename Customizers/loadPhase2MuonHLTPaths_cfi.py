@@ -408,7 +408,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
     # -- Paths
     process.L1_SingleTkMuon_22 = cms.Path(
         process.HLTBeginSequence+
-        process.hltL1TkSingleMuFiltered22
+        process.hltL1TkSingleMuFiltered22+
         process.HLTEndSequence
     )
 
