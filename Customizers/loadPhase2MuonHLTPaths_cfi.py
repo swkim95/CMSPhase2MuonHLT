@@ -486,25 +486,25 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         process.hltL3fL1TkSingleMu22L3Filtered24Q+
 
         # Isolation
-        process.HLTDoFullUnpackingEgammaEcalSequence +
-        process.HLTDoLocalHcalSequence +
-        process.HLTFastJetForMuons +
+        process.HLTDoFullUnpackingEgammaEcalSequence+
+        process.HLTDoLocalHcalSequence+
+        process.HLTFastJetForMuons+
 
-        process.HLTPFClusteringForMuonsUnseeded +
-        process.hltPhase2L3MuonsEcalIsodR0p3dRVeto0p000 +
-        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfecalIsoFiltered0p41 +
+        process.HLTPFClusteringForMuonsUnseeded+
+        process.hltPhase2L3MuonsEcalIsodR0p3dRVeto0p000+
+        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfecalIsoFiltered0p41+
 
-        process.HLTPFHcalClusteringForMuons +
-        process.hltPhase2L3MuonsHcalIsodR0p3dRVeto0p000 +
-        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p40 +
+        process.HLTPFHcalClusteringForMuons+
+        process.hltPhase2L3MuonsHcalIsodR0p3dRVeto0p000+
+        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhcalIsoFiltered0p40+
 
         process.HLTHgcalTiclLayerClusteringForMuons + 
-        process.hltPhase2L3MuonsHgcalLCIsodR0p2dRVetoEM0p00dRVetoHad0p02minEEM0p00minEHad0p00 +
-        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered4p70
+        process.hltPhase2L3MuonsHgcalLCIsodR0p2dRVetoEM0p00dRVetoHad0p02minEEM0p00minEHad0p00+
+        process.hltL3crIsoL1TkSingleMu22L3f24QL3pfhgcalIsoFiltered4p70+
 
-        process.tracking_v6_1_L3Muon_NoVertexReco +
-        process.hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p07 +
-        process.hltL3crIsoL1TkSingleMu22L3f24QL3trkIsoRegionalNewFiltered0p07EcalHcalHgcalTrk
+        process.tracking_v6_1_L3Muon_NoVertexReco+
+        process.hltPhase2L3MuonsTrkIsoRegionalNewdR0p3dRVeto0p005dz0p25dr0p20ChisqInfPtMin0p0Cut0p07+
+        process.hltL3crIsoL1TkSingleMu22L3f24QL3trkIsoRegionalNewFiltered0p07EcalHcalHgcalTrk+
 
         process.HLTEndSequence
     )
