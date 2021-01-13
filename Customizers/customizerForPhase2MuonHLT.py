@@ -1138,6 +1138,8 @@ def customizeL2MuonReco(process, processName = "MYHLT"):
         ),
         SetMinPtBarrelTo = cms.double(3.5),
         SetMinPtEndcapTo = cms.double(1.0),
+        MinPL1Tk = cms.double(3.5),
+        MinPtL1TkBarrel = cms.double(3.5),
         UseOfflineSeed = cms.untracked.bool(True),
         UseUnassociatedL1 = cms.bool(False)
     )
