@@ -63,8 +63,8 @@ process = loadPhase2MuonHLTPaths(process)
 process.schedule = cms.Schedule(
     process.L1simulation_step,
     process.L1_SingleTkMuon_22,
-    process.L1_DoubleMuon_17_8,
-    process.L1_TripleMuon_5_3_3,
+    process.L1_DoubleTkMuon_17_8,
+    process.L1_TripleTkMuon_5_3_3,
     process.HLT_Mu50_FromL1TkMuon_Open,
     process.HLT_Mu50_FromL1TkMuon,
     process.HLT_IsoMu24_FromL1TkMuon,
