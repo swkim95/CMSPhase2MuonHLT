@@ -31,9 +31,6 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         overlap=cms.vdouble(0.920897, 1.03712, 0.0),
         endcap=cms.vdouble(0.864715, 1.03215, 0.0),
     )
-    L1TkMuonBarrelQual = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-    L1TkMuonOverlapQual = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-    L1TkMuonEndcapQual = [11, 13, 14, 15]
 
     # -- L3 Reconstruction and Isolation
     from HLTrigger.PhaseII.Muon.Customizers.customizerForPhase2MuonHLT import customizePhase2MuonHLTReconstruction
@@ -55,13 +52,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         MinEta=cms.double(-2.4),
         MaxEta=cms.double(2.4),
         inputTag = cms.InputTag("L1TkMuons", "", processName),
-        Scalings = L1TkMuonScalings,
-        ApplyBarrelQual = cms.bool(False),
-        ApplyOverlapQual = cms.bool(False),
-        ApplyEndcapQual = cms.bool(True),
-        BarrelQualities = cms.vuint32(L1TkMuonBarrelQual),
-        OverlapQualities = cms.vuint32(L1TkMuonOverlapQual),
-        EndcapQualities = cms.vuint32(L1TkMuonEndcapQual)
+        Scalings = L1TkMuonScalings
     )
     process.hltL3fL1TkSingleMu22L3Filtered50Q = cms.EDFilter( "HLTMuonTrkL1TkMuFilter",
         saveTags = cms.bool( True ),
@@ -172,13 +163,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         MinEta=cms.double(-2.4),
         MaxEta=cms.double(2.4),
         inputTag = cms.InputTag("L1TkMuons", "", processName),
-        Scalings = L1TkMuonScalings,
-        ApplyBarrelQual = cms.bool(False),
-        ApplyOverlapQual = cms.bool(False),
-        ApplyEndcapQual = cms.bool(True),
-        BarrelQualities = cms.vuint32(L1TkMuonBarrelQual),
-        OverlapQualities = cms.vuint32(L1TkMuonOverlapQual),
-        EndcapQualities = cms.vuint32(L1TkMuonEndcapQual)
+        Scalings = L1TkMuonScalings
     )
     process.hltL1TkSingleMuFiltered15 = cms.EDFilter("L1TTkMuonFilter",
         saveTags = cms.bool( True ),
@@ -187,13 +172,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         MinEta=cms.double(-2.4),
         MaxEta=cms.double(2.4),
         inputTag = cms.InputTag("L1TkMuons", "", processName),
-        Scalings = L1TkMuonScalings,
-        ApplyBarrelQual = cms.bool(False),
-        ApplyOverlapQual = cms.bool(False),
-        ApplyEndcapQual = cms.bool(True),
-        BarrelQualities = cms.vuint32(L1TkMuonBarrelQual),
-        OverlapQualities = cms.vuint32(L1TkMuonOverlapQual),
-        EndcapQualities = cms.vuint32(L1TkMuonEndcapQual)
+        Scalings = L1TkMuonScalings
     )
     process.hltDoubleMuon7DZ1p0 = cms.EDFilter("HLT2L1TkMuonL1TkMuonDZ",
         saveTags = cms.bool( True ),
@@ -336,13 +315,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         MinEta=cms.double(-2.4),
         MaxEta=cms.double(2.4),
         inputTag = cms.InputTag("L1TkMuons", "", processName),
-        Scalings = L1TkMuonScalings,
-        ApplyBarrelQual = cms.bool(False),
-        ApplyOverlapQual = cms.bool(False),
-        ApplyEndcapQual = cms.bool(True),
-        BarrelQualities = cms.vuint32(L1TkMuonBarrelQual),
-        OverlapQualities = cms.vuint32(L1TkMuonOverlapQual),
-        EndcapQualities = cms.vuint32(L1TkMuonEndcapQual)
+        Scalings = L1TkMuonScalings
     )
     process.hltL1SingleMuFiltered5 = cms.EDFilter("L1TTkMuonFilter",
         saveTags = cms.bool( True ),
@@ -351,13 +324,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         MinEta=cms.double(-2.4),
         MaxEta=cms.double(2.4),
         inputTag = cms.InputTag("L1TkMuons", "", processName),
-        Scalings = L1TkMuonScalings,
-        ApplyBarrelQual = cms.bool(False),
-        ApplyOverlapQual = cms.bool(False),
-        ApplyEndcapQual = cms.bool(True),
-        BarrelQualities = cms.vuint32(L1TkMuonBarrelQual),
-        OverlapQualities = cms.vuint32(L1TkMuonOverlapQual),
-        EndcapQualities = cms.vuint32(L1TkMuonEndcapQual)
+        Scalings = L1TkMuonScalings
     )
     process.hltTripleMuon3DZ1p0 = cms.EDFilter("HLT2L1TkMuonL1TkMuonDZ",
         saveTags = cms.bool( True ),
