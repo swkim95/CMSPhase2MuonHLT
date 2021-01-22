@@ -30,7 +30,7 @@ cmsRun HLT_Phase2_example_menu.py
 
 
 
-## (Outdated) Running L3 Muon reco (OI + IO) in CMSSW_11_1_4
+## (Outdated) Running L3 Muon reco (OI + IO) in CMSSW_11_1_6
 <details><summary> show </summary>
 <p>
 
