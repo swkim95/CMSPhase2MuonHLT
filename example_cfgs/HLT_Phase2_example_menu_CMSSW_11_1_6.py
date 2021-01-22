@@ -34,7 +34,6 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.L1TrackTrigger_step = cms.Path(process.L1TrackTrigger)
 process.L1simulation_step = cms.Path(process.SimL1Emulator)
 process.L1TkMuons.L1TrackInputTag = cms.InputTag("TTTracksFromTrackletEmulation", "Level1TTTracks", "RECO")
-process.L1TkMuons.applyQualityCuts = cms.bool(True)
 # -- #
 
 # -- HLTriggerFinalPath -- #
