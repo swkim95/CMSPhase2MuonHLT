@@ -9,6 +9,7 @@ cd CMSSW_11_1_7/src
 cmsenv
 
 git cms-init
+git cms-addpkg HLTrigger/HLTfilters
 
 git clone https://github.com/khaosmos93/CMSPhase2MuonHLT.git HLTrigger/PhaseII/python/Muon
 
