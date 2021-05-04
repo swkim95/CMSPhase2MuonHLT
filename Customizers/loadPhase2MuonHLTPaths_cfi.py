@@ -7,7 +7,7 @@ def loadPhase2MuonHLTPaths(process, processName = "MYHLT"):
 ########################################################
 Imported muon paths:
     - L1_SingleTkMuon_22
-    - L1_DoubleTkMuon_17_8
+    - L1_DoubleTkMuon_15_7
     - L1_TripleTkMuon_5_3_3
     - HLT_Mu50_FromL1TkMuon
     - HLT_Mu50_FromL1TkMuon_Open
@@ -182,7 +182,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         MinN = cms.int32( 1 ),
         triggerType1 = cms.int32( -114 ),
         triggerType2 = cms.int32( -114 ),
-        MinDR = cms.double( -1 ),
+        MinDR = cms.double( 1.e-6 ),  # cms.double( -1 ),
         MaxDZ = cms.double( 1.0 ),
         inputTag1 = cms.InputTag( "hltL1TkDoubleMuFiltered7" ),
         checkSC = cms.bool( False ),
@@ -193,7 +193,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         originTag1 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
         originTag2 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
         MinN = cms.int32( 1 ),
-        MinDR = cms.double( 0 ),
+        MinDR = cms.double( 1.e-6 ),  # cms.double( 0 ),
         inputTag1 = cms.InputTag( "hltL1TkDoubleMuFiltered7" ),
         inputTag2 = cms.InputTag( "hltL1TkDoubleMuFiltered7" )
     )
@@ -334,7 +334,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         MinN = cms.int32( 3 ),
         triggerType1 = cms.int32( -114 ),
         triggerType2 = cms.int32( -114 ),
-        MinDR = cms.double( -1 ),
+        MinDR = cms.double( 1.e-6 ),  # cms.double( -1 ),
         MaxDZ = cms.double( 1.0 ),
         inputTag1 = cms.InputTag( "hltL1TripleMuFiltered3" ),
         checkSC = cms.bool( False ),
@@ -345,7 +345,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         originTag1 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
         originTag2 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
         MinN = cms.int32( 3 ),
-        MinDR = cms.double( 0 ),
+        MinDR = cms.double( 1.e-6 ),  # cms.double( 0 ),
         inputTag1 = cms.InputTag( "hltL1TripleMuFiltered3" ),
         inputTag2 = cms.InputTag( "hltL1TripleMuFiltered3" )
     )
@@ -397,7 +397,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         process.HLTEndSequence
     )
 
-    process.L1_DoubleTkMuon_17_8 = cms.Path(
+    process.L1_DoubleTkMuon_15_7 = cms.Path(
         process.HLTBeginSequence+
         process.hltL1TkDoubleMuFiltered7+
         process.hltL1TkSingleMuFiltered15+
