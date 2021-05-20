@@ -193,7 +193,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         originTag1 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
         originTag2 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
         MinN = cms.int32( 1 ),
-        MinDR = cms.double( 1.e-6 ),  # cms.double( 0 ),
+        MinDR = cms.double( 0 ),
         inputTag1 = cms.InputTag( "hltL1TkDoubleMuFiltered7" ),
         inputTag2 = cms.InputTag( "hltL1TkDoubleMuFiltered7" )
     )
@@ -345,7 +345,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         originTag1 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
         originTag2 = cms.VInputTag( 'L1TkMuons::%s' % processName ),
         MinN = cms.int32( 3 ),
-        MinDR = cms.double( 1.e-6 ),  # cms.double( 0 ),
+        MinDR = cms.double( 0 ),
         inputTag1 = cms.InputTag( "hltL1TripleMuFiltered3" ),
         inputTag2 = cms.InputTag( "hltL1TripleMuFiltered3" )
     )
