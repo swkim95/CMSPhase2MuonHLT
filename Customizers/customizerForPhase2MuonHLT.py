@@ -5829,5 +5829,66 @@ def customizePhase2MuonHLTIsolationForOpt(process, processName = "MYHLT"):
 
     return process, (pfIsoTags, pfIsoLabels, pfIsoMods), (trkIsoTags, trkIsoLabels, trkIsoMods)
 
+def customizeOIFromL1TkMuon(process, processName = "MYHLT"):
+    # from https://github.com/kondratyevd/CMSPhase2MuonHLT
+    process.hltPhase2L3OISeedsFromL1TkMuons = cms.EDProducer("TSGForOIFromL1TkMu",
+        MeasurementTrackerEvent = cms.InputTag("MeasurementTrackerEvent"),
+        SF1 = cms.double(3.0),
+        SF2 = cms.double(4.0),
+        SF3 = cms.double(5.0),
+        SF4 = cms.double(7.0),
+        SF5 = cms.double(10.0),
+        SF6 = cms.double(2.0),
+        UseHitLessSeeds = cms.bool(True),
+        adjustErrorsDynamicallyForHitless = cms.bool(True),
+        adjustErrorsDynamicallyForHits = cms.bool(False),
+        debug = cms.untracked.bool(False),  # True
+        estimator = cms.string('hltESPChi2MeasurementEstimator100'),
+        eta1 = cms.double(0.2),
+        eta2 = cms.double(0.3),
+        eta3 = cms.double(1.0),
+        eta4 = cms.double(1.2),
+        eta5 = cms.double(1.6),
+        eta6 = cms.double(1.4),
+        eta7 = cms.double(2.1),
+        fixedErrorRescaleFactorForHitless = cms.double(2.0),
+        fixedErrorRescaleFactorForHits = cms.double(1.0),
+        hitsToTry = cms.int32(1),
+        layersToTry = cms.int32(2),
+        maxEtaForTOB = cms.double(1.8),
+        maxHitSeeds = cms.uint32(1), # default 1
+        maxHitlessSeeds = cms.uint32(5), # default 5
+        maxSeeds = cms.uint32(20),
+        minEtaForTEC = cms.double(0.7),
+        pT1 = cms.double(13.0),
+        pT2 = cms.double(30.0),
+        pT3 = cms.double(70.0),
+        propagatorName = cms.string('PropagatorWithMaterialParabolicMf'),
+        src = cms.InputTag("L1TkMuons", "", processName),
+        minPtOfL1TKMuons = cms.double(23),
+        tsosDiff1 = cms.double(0.2),
+        tsosDiff2 = cms.double(0.02)
+    )
 
+    # TDR setup
+    hltPhase2L3OISeedsFromL1TkMuons.adjustErrorsDynamicallyForHitless = cms.bool(False)
+    hltPhase2L3OISeedsFromL1TkMuons.fixedErrorRescaleFactorForHitless = cms.double(1.0)
+    hltPhase2L3OISeedsFromL1TkMuons.maxHitSeeds = cms.uint32(1)
+    hltPhase2L3OISeedsFromL1TkMuons.maxHitlessSeeds = cms.uint32(3)
+
+    process.hltPhase2L3OITrackCandidates.src = cms.InputTag("hltPhase2L3OISeedsFromL1TkMuons")
+
+    process.HLTPhase2L3OImuonTkCandidateSequence = cms.Sequence(
+        process.hltPhase2L3OISeedsFromL1TkMuons+
+        process.hltPhase2L3OITrackCandidates+
+        process.hltPhase2L3OIMuCtfWithMaterialTracks+
+        process.hltPhase2L3OIMuonTrackCutClassifier+
+        process.hltPhase2L3OIMuonTrackSelectionHighPurity+
+        process.hltL3MuonsPhase2L3OI+
+        process.hltPhase2L3OIL3MuonsLinksCombination+
+        process.hltPhase2L3OIL3Muons+
+        process.hltPhase2L3OIL3MuonCandidates
+    )
+
+    return process
 

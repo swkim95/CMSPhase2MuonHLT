@@ -6,9 +6,9 @@ def loadPhase2MuonHLTPaths(process, processName = "MYHLT"):
     print """
 ########################################################
 Imported muon paths:
-    - L1_SingleTkMuon_22
-    - L1_DoubleTkMuon_15_7
-    - L1_TripleTkMuon_5_3_3
+    - L1T_SingleTkMuon_22
+    - L1T_DoubleTkMuon_15_7
+    - L1T_TripleTkMuon_5_3_3
     - HLT_Mu50_FromL1TkMuon
     - HLT_Mu50_FromL1TkMuon_Open
     - HLT_IsoMu24_FromL1TkMuon
@@ -391,13 +391,13 @@ L1TkMuon scalings (ScalingsV11p1.txt):
     )
 
     # -- Paths
-    process.L1_SingleTkMuon_22 = cms.Path(
+    process.L1T_SingleTkMuon_22 = cms.Path(
         process.HLTBeginSequence+
         process.hltL1TkSingleMuFiltered22+
         process.HLTEndSequence
     )
 
-    process.L1_DoubleTkMuon_15_7 = cms.Path(
+    process.L1T_DoubleTkMuon_15_7 = cms.Path(
         process.HLTBeginSequence+
         process.hltL1TkDoubleMuFiltered7+
         process.hltL1TkSingleMuFiltered15+
@@ -405,7 +405,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
         process.HLTEndSequence
     )
 
-    process.L1_TripleTkMuon_5_3_3 = cms.Path(
+    process.L1T_TripleTkMuon_5_3_3 = cms.Path(
         process.HLTBeginSequence+
         process.hltL1TripleMuFiltered3+
         process.hltL1SingleMuFiltered5+
