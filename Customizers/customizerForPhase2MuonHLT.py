@@ -5871,10 +5871,10 @@ def customizeOIFromL1TkMuon(process, processName = "MYHLT"):
     )
 
     # TDR setup
-    hltPhase2L3OISeedsFromL1TkMuons.adjustErrorsDynamicallyForHitless = cms.bool(False)
-    hltPhase2L3OISeedsFromL1TkMuons.fixedErrorRescaleFactorForHitless = cms.double(1.0)
-    hltPhase2L3OISeedsFromL1TkMuons.maxHitSeeds = cms.uint32(1)
-    hltPhase2L3OISeedsFromL1TkMuons.maxHitlessSeeds = cms.uint32(3)
+    process.hltPhase2L3OISeedsFromL1TkMuons.adjustErrorsDynamicallyForHitless = cms.bool(False)
+    process.hltPhase2L3OISeedsFromL1TkMuons.fixedErrorRescaleFactorForHitless = cms.double(1.0)
+    process.hltPhase2L3OISeedsFromL1TkMuons.maxHitSeeds = cms.uint32(1)
+    process.hltPhase2L3OISeedsFromL1TkMuons.maxHitlessSeeds = cms.uint32(3)
 
     process.hltPhase2L3OITrackCandidates.src = cms.InputTag("hltPhase2L3OISeedsFromL1TkMuons")
 
