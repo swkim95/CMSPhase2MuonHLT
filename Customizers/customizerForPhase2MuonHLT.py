@@ -5875,6 +5875,7 @@ def customizeOIFromL1TkMuon(process, processName = "MYHLT"):
     process.hltPhase2L3OISeedsFromL1TkMuons.fixedErrorRescaleFactorForHitless = cms.double(1.0)
     process.hltPhase2L3OISeedsFromL1TkMuons.maxHitSeeds = cms.uint32(1)
     process.hltPhase2L3OISeedsFromL1TkMuons.maxHitlessSeeds = cms.uint32(3)
+    process.hltPhase2L3OISeedsFromL1TkMuons.minPtOfL1TKMuons = cms.double(10.)  # HERE
 
     process.hltPhase2L3OITrackCandidates.src = cms.InputTag("hltPhase2L3OISeedsFromL1TkMuons")
 
