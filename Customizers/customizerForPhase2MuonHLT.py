@@ -1,5 +1,8 @@
 import FWCore.ParameterSet.Config as cms
 
+from functools import reduce
+
+
 def loadPhase2MuonHLTPSets(process, processName = "MYHLT"):
 
     process.hltPhase2PSetPvClusterComparerForIT = cms.PSet(

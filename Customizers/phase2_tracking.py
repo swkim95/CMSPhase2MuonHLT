@@ -5,10 +5,10 @@ from RecoLuminosity.LumiProducer.bunchSpacingProducer_cfi import *
 def customise_common(process):
 
     #Local recos
-    process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_cfi")
+    # process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_cfi")
     process.load("RecoLocalCalo.EcalRecProducers.ecalDetIdToBeRecovered_cfi")
 
-    process.load("RecoLocalCalo.EcalRecProducers.ecalRecHit_cfi")
+    # process.load("RecoLocalCalo.EcalRecProducers.ecalRecHit_cfi")
     process.load("RecoLocalCalo.Configuration.hcalLocalReco_cff")
 
     # process.load("RecoLocalTracker.SiPhase2Clusterizer.phase2TrackerClusterizer_cfi")
