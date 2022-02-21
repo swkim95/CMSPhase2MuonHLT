@@ -2,28 +2,25 @@ import FWCore.ParameterSet.Config as cms
 
 def loadPhase2MuonHLTPaths(process, processName = "MYHLT"):
     # N.B. this customizer overwrites previously defined filters and paths
+    # ########################################################
+    # Imported muon paths:
+    #     - L1T_SingleTkMuon_22
+    #     - L1T_DoubleTkMuon_15_7
+    #     - L1T_TripleTkMuon_5_3_3
+    #     - HLT_Mu50_FromL1TkMuon
+    #     - HLT_Mu50_FromL1TkMuon_Open
+    #     - HLT_IsoMu24_FromL1TkMuon
+    #     - HLT_Mu37_Mu27_FromL1TkMuon
+    #     - HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_FromL1TkMuon
+    #     - HLT_TriMu_10_5_5_DZ_FromL1TkMuon
 
-    print """
-########################################################
-Imported muon paths:
-    - L1T_SingleTkMuon_22
-    - L1T_DoubleTkMuon_15_7
-    - L1T_TripleTkMuon_5_3_3
-    - HLT_Mu50_FromL1TkMuon
-    - HLT_Mu50_FromL1TkMuon_Open
-    - HLT_IsoMu24_FromL1TkMuon
-    - HLT_Mu37_Mu27_FromL1TkMuon
-    - HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_FromL1TkMuon
-    - HLT_TriMu_10_5_5_DZ_FromL1TkMuon
-
-L1TkMuon scalings (ScalingsV11p1.txt):
-    L1TkMuonScalings = cms.PSet(
-        barrel=cms.vdouble(0.820128, 1.04124, 0.0),
-        overlap=cms.vdouble(0.920897, 1.03712, 0.0),
-        endcap=cms.vdouble(0.864715, 1.03215, 0.0),
-    )
-########################################################
-"""
+    # L1TkMuon scalings (ScalingsV11p1.txt):
+    #     L1TkMuonScalings = cms.PSet(
+    #         barrel=cms.vdouble(0.820128, 1.04124, 0.0),
+    #         overlap=cms.vdouble(0.920897, 1.03712, 0.0),
+    #         endcap=cms.vdouble(0.864715, 1.03215, 0.0),
+    #     )
+    # ########################################################
 
     # -- L1TkMuon scalings and allowed qualities
     L1TkMuonScalings = cms.PSet(
