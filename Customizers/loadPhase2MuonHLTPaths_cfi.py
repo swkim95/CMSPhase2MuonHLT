@@ -36,10 +36,10 @@ def loadPhase2MuonHLTPaths(process, processName = "MYHLT"):
     from HLTrigger.PhaseII.Muon.Customizers.customizerForPhase2MuonHLT import customizePhase2MuonHLTIsolation
     process = customizePhase2MuonHLTIsolation(process)
 
-    for moduleType in [process.producers_(), process.filters_(), process.analyzers_()]:
-        for name, module in moduleType.iteritems():
-            if hasattr(module, "mightGet") and module.mightGet:
-                module.mightGet = cms.optional.untracked.vstring
+    # for moduleType in [process.producers_(), process.filters_(), process.analyzers_()]:
+    #     for name, module in moduleType.iteritems():
+    #         if hasattr(module, "mightGet") and module.mightGet:
+    #             module.mightGet = cms.optional.untracked.vstring
 
     # -- Single muon filters
     process.hltL1TkSingleMuFiltered22 = cms.EDFilter("L1TTkMuonFilter",
