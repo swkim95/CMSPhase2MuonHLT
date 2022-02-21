@@ -38,7 +38,9 @@ def loadPhase2MuonHLTPSets(process, processName = "MYHLT"):
         pixelSeedExtension = cms.bool(False),
         seedExtension = cms.int32(0),
         seedPairPenalty = cms.int32(0),
-        strictSeedExtension = cms.bool(False)
+        strictSeedExtension = cms.bool(False),
+        highEtaSwitch = cms.double( 5.0 ),
+        minHitsAtHighEta = cms.int32( 5 )
     )
 
     process.HLTPSetMuonCkfTrajectoryBuilder = cms.PSet(
@@ -113,7 +115,9 @@ def loadPhase2MuonHLTPSets(process, processName = "MYHLT"):
         pixelSeedExtension = cms.bool(False),
         seedExtension = cms.int32(0),
         seedPairPenalty = cms.int32(0),
-        strictSeedExtension = cms.bool(False)
+        strictSeedExtension = cms.bool(False),
+        highEtaSwitch = cms.double( 5.0 ),
+        minHitsAtHighEta = cms.int32( 5 )
     )
 
     process.HLTIter0Phase2L3FromL1TkMuonGroupedCkfTrajectoryFilterIT = cms.PSet(
@@ -138,7 +142,9 @@ def loadPhase2MuonHLTPSets(process, processName = "MYHLT"):
         pixelSeedExtension = cms.bool(False),
         seedExtension = cms.int32(0),
         seedPairPenalty = cms.int32(0),
-        strictSeedExtension = cms.bool(False)
+        strictSeedExtension = cms.bool(False),
+        highEtaSwitch = cms.double( 5.0 ),
+        minHitsAtHighEta = cms.int32( 5 )
     )
 
     process.HLTIter0Phase2L3FromL1TkMuonPSetGroupedCkfTrajectoryBuilderIT = cms.PSet(
@@ -218,7 +224,9 @@ def loadPhase2MuonHLTPSets(process, processName = "MYHLT"):
         pixelSeedExtension = cms.bool(False),
         seedExtension = cms.int32(0),
         seedPairPenalty = cms.int32(0),
-        strictSeedExtension = cms.bool(False)
+        strictSeedExtension = cms.bool(False),
+        highEtaSwitch = cms.double( 5.0 ),
+        minHitsAtHighEta = cms.int32( 5 )
     )
 
     process.HLTSeedFromProtoTracks = cms.PSet(
@@ -265,7 +273,9 @@ def loadPhase2MuonHLTPSets(process, processName = "MYHLT"):
         pixelSeedExtension = cms.bool(False),
         seedExtension = cms.int32(0),
         seedPairPenalty = cms.int32(0),
-        strictSeedExtension = cms.bool(False)
+        strictSeedExtension = cms.bool(False),
+        highEtaSwitch = cms.double( 5.0 ),
+        minHitsAtHighEta = cms.int32( 5 )
     )
 
     process.HLTIter0Phase2L3MuonPSetGroupedCkfTrajectoryBuilderIT = cms.PSet(
@@ -375,7 +385,9 @@ def loadPhase2MuonHLTPSets(process, processName = "MYHLT"):
         minNumberOfHitsPerLoop = cms.int32( 4 ),
         minHitsMinPt = cms.int32( 4 ),
         maxLostHitsFraction = cms.double( 999.0 ),
-        maxLostHits = cms.int32( 1 )
+        maxLostHits = cms.int32( 1 ),
+        highEtaSwitch = cms.double( 5.0 ),
+        minHitsAtHighEta = cms.int32( 5 )
     )
 
     process.HLTSiStripClusterChargeCutLoose = cms.PSet(
@@ -425,7 +437,9 @@ def loadPhase2MuonHLTPSets(process, processName = "MYHLT"):
         minNumberOfHitsPerLoop = cms.int32( 4 ),
         minHitsMinPt = cms.int32( 3 ),
         maxLostHitsFraction = cms.double( 999.0 ),
-        maxLostHits = cms.int32( 1 )
+        maxLostHits = cms.int32( 1 ),
+        highEtaSwitch = cms.double( 5.0 ),
+        minHitsAtHighEta = cms.int32( 5 )
     )
 
     process.HLTIter2GroupedCkfTrajectoryBuilderIT = cms.PSet( 
@@ -477,7 +491,9 @@ def loadPhase2MuonHLTPSets(process, processName = "MYHLT"):
         minNumberOfHitsPerLoop = cms.int32( 4 ),
         minHitsMinPt = cms.int32( 3 ),
         maxLostHitsFraction = cms.double( 999.0 ),
-        maxLostHits = cms.int32( 1 )
+        maxLostHits = cms.int32( 1 ),
+        highEtaSwitch = cms.double( 5.0 ),
+        minHitsAtHighEta = cms.int32( 5 )
     )
 
     return process
