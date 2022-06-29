@@ -4011,7 +4011,7 @@ def customizePhase2MuonHLTHcalIsolation(process, processName = "MYHLT"):
 
 def customizePhase2MuonHLTHgcalPFIsolation(process, processName = "MYHLT"):
 
-    print "not using anymore"
+    print("not using anymore")
     import sys
     sys.exit(1)
 
