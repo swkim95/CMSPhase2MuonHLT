@@ -40,7 +40,7 @@ L1TkMuon scalings (ScalingsV11p1.txt):
     process = customizePhase2MuonHLTIsolation(process)
 
     for moduleType in [process.producers_(), process.filters_(), process.analyzers_()]:
-        for name, module in moduleType.iteritems():
+        for name, module in moduleType.items():
             if hasattr(module, "mightGet") and module.mightGet:
                 module.mightGet = cms.optional.untracked.vstring
 
